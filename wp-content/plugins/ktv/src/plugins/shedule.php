@@ -19,14 +19,37 @@
 
             $post = get_post( $stream->tv_id );
 
+            $terms = __stream_terms( $stream, $post );
+
+            if( strtotime( $stream->tv_start ) < time() )
+                $terms[] = '<a href="#" class="term live">' . __( 'Live', 'ktv' ) . '</a>';
+
             $events[] = '<div class="event">
-                <h3>' . get_the_title( $post ) . '</h3>
+                <div class="image">
+                    ' . ( !empty( $stream->tv_stream )
+                        ? '<img src="https://i.ytimg.com/vi/' . $stream->tv_stream . '/hq720.jpg" />'
+                        : '' ) . '
+                </div>
+                <div class="info">
+                    <div class="clock" time="' . ( time() - strtotime( $stream->tv_start ) ) . '"></div>
+                    <div class="terms">
+                        ' . implode( '', $terms ) . '
+                    </div>
+                    <h3>' . get_the_title( $post ) . '</h3>
+                    <p>' . implode( ' ', array_slice( explode( ' ', $post->post_content ), 0, 15 ) ) . ' &hellip;</p>
+                </div>
             </div>';
 
         }
 
+        __use_style( 'shedule' );
+        __use_script( 'clock' );
+
         echo '<div class="shedule">
-            ' . implode( '', $events ) . '
+            <h2>' . __( 'Shedule', 'ktv' ) . '</h2>
+            <div class="events">
+                ' . implode( '', $events ) . '
+            </div>
         </div>';
 
     }
