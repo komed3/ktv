@@ -1,6 +1,6 @@
 <?php
 
-    function __output_stream( $stream ) {
+    function __stream( $stream ) {
 
         $post = get_post( $stream->tv_id );
 
