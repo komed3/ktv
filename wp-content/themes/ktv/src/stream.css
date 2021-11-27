@@ -17,7 +17,8 @@
     width: var( --container-width );
 }
 
-.stream .info-container .clock {
+.stream .info-container .clock,
+.stream .info-container .time {
     float: right;
 }
 

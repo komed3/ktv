@@ -119,8 +119,8 @@ footer .footer-inner .credits {
 
 /* main */
 
-.term:link, .term:visited, .term:active,
-.tag:link, .tag:visited, .tag:active {
+.term:link, .term:visited, .term:hover,
+.tag:link, .tag:visited, .tag:hover {
     display: inline-block;
     margin: 0 0.5em 0.5em 0;
     padding: 0.3em 0.6em;
@@ -130,7 +130,11 @@ footer .footer-inner .credits {
     border-radius: 0.3em;
 }
 
-.tag:link, .tag:visited, .tag:active {
+.term:hover, .tag:hover {
+    opacity: 0.9;
+}
+
+.tag:link, .tag:visited, .tag:hover {
     background: var( --light-gray );
     font-size: 0.8em;
 }

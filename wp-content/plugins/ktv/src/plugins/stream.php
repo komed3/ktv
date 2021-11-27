@@ -19,7 +19,12 @@
                     </iframe>
                 </div>
                 <div class="info-container">
-                    <div class="clock" time="' . ( time() - strtotime( $stream->tv_start ) ) . '"></div>
+                    ' . ( strtotime( $stream->tv_end ) > time()
+                            ? '<div class="clock" time="' . ( time() - strtotime( $stream->tv_start ) ) . '"></div>'
+                            : '<div class="time">' . date_i18n(
+                                   __( 'h:i A — F jS, Y', 'ktv' ),
+                                   strtotime( $stream->tv_start )
+                               ) . '</div>' ) . '
                     <div class="terms">
                         ' . implode( '', $terms ) . '
                     </div>
