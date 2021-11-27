@@ -1,11 +1,31 @@
 <?php
 
+    function __theme_styles() {
+
+        wp_enqueue_style(
+            'ktv',
+            get_stylesheet_directory_uri() . '/style.css'
+        );
+
+        wp_enqueue_style(
+            'ktv-global',
+            get_stylesheet_directory_uri() . '/src/global.css',
+            [ 'ktv' ]
+        );
+
+    }
+
+    add_action( 'wp_enqueue_scripts', '__theme_styles' );
+
     function __theme_init() {
 
         register_nav_menus( [
             'primary' => __( 'Primary', 'ktv' ),
             'footer' => __( 'Footer', 'ktv' )
         ] );
+
+        if( !is_admin() )
+            show_admin_bar( false );
 
     }
 

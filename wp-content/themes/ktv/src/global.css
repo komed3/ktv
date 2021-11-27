@@ -1,0 +1,37 @@
+@import url( https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap );
+
+:root {
+    --text-sans: 'Roboto', 'Arial', sans-serif;
+    --site-bg: #161d27;
+    --text-color: #f9f9f9;
+    --accent-color: #d15055;
+    --light-gray: #2d3036;
+}
+
+body {
+    margin: 0;
+    font-family: var( --text-sans );
+    color: var( --text-color );
+    background: var( --site-bg );
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: var( --text-color );
+}
+
+a:hover {
+    color: var( --accent-color );
+}
+
+header .header-inner {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    background: var( --light-gray );
+}
+
+header .header-inner h1 {
+    margin: 0;
+}
