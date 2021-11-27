@@ -1,7 +1,7 @@
 <?php
 
     /* 
-     * Template Name: Stream
+     * Template Name: Shedule
      * 
      */
 
