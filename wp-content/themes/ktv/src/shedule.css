@@ -13,10 +13,28 @@
 }
 
 .shedule .events .event {
+    position: relative;
     margin-bottom: 2em;
     padding: 2em;
     background: var( --light-gray );
     border-radius: 1em;
+    overflow: hidden;
+}
+
+.shedule .events .event .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-position: center top;
+    background-size: cover;
+    opacity: 0.1;
+}
+
+.shedule .events .event .info {
+    position: relative;
+    z-index: 9;
 }
 
 .shedule .events .event .clock {
