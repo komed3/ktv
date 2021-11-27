@@ -1,0 +1,63 @@
+.vod {
+    margin: 4em auto;
+    width: var( --container-width );
+}
+
+.vod h2 {
+    font-size: 2em;
+}
+
+.vod .videos {
+    column-count: 3;
+    column-gap: 2em;
+}
+
+.vod .videos .video {
+    position: relative;
+    margin-bottom: 2em;
+    padding: 2em;
+    background: var( --light-gray );
+    border-radius: 1em;
+    overflow: hidden;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    column-break-inside: avoid;
+}
+
+.vod .videos .video .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-position: center top;
+    background-size: cover;
+    opacity: 0.1;
+}
+
+.vod .videos .video .info {
+    position: relative;
+    z-index: 9;
+}
+
+.vod .videos .video .info .time {
+    font-size: 0.9em;
+    font-weight: 900;
+}
+
+.vod .videos .video .info h3 {
+    margin: 0.2em 0 0.6em 0;
+    line-height: 1;
+    font-size: 1.3em;
+}
+
+.vod .videos .video .info p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+.vod .videos :hover .video .info :not(h3) {
+    color: var( --text-color );
+}
