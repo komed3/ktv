@@ -1,4 +1,4 @@
-.stream .video-container {
+.video-container {
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;

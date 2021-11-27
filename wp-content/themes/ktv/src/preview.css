@@ -1,0 +1,47 @@
+.preview {
+    position: relative;
+    background: var( --dark-bg );
+}
+
+.preview .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-position: center top;
+    background-size: cover;
+    opacity: 0.1;
+}
+
+.preview .preview-container {
+    position: relative;
+    margin: 0 auto;
+    width: var( --container-width );
+    padding: 8em 0;
+    z-index: 9;
+}
+
+.preview .preview-container .clock {
+    float: right;
+    font-size: 1.6em;
+    font-weight: 900;
+}
+
+.preview .preview-container h2 {
+    margin: 1.5em 0 0.5em 0;
+    font-size: 2em;
+    opacity: 0.6;
+}
+
+.preview .preview-container h1 {
+    margin: 0 33% 0.5em 0;
+    font-size: 2.4em;
+}
+
+.preview .preview-container p {
+    margin: 0 33% 1em 0;
+    line-height: 1.5;
+    font-size: 1.3em;
+    opacity: 0.8;
+}

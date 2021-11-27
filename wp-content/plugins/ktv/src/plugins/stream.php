@@ -56,6 +56,9 @@
 
         global $wpdb, $ktvdb;
 
+        __use_style( 'preview' );
+        __use_script( 'clock' );
+
         if( $stream = $wpdb->get_row( '
             SELECT   *
             FROM     ' . $ktvdb . '
