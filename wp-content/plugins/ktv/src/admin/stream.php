@@ -56,4 +56,64 @@
 
     add_action( 'init', '__register_stream' );
 
+    function __stream_editor( $post ) {
+
+        if( $post->post_type == 'stream' ) {
+
+            $stream = __get_stream( $post->ID );
+
+            $start = explode( ' ', $stream ? $stream->tv_start : date( 'Y-m-d H:00:00' ) );
+            $end = explode( ' ', $stream ? $stream->tv_end : date( 'Y-m-d H:59:00' ) );
+
+            echo '<div class="clearfix">&nbsp;</div>
+            <div id="stream-settings" class="postbox">
+                <div class="postbox-header">
+                    <h2>' . __( 'Stream settings', 'ktv' ) . '</h2>
+                </div>
+                <div class="inside">
+                    <table class="form-table">
+                        <tbody>
+                            <tr>
+                                <th><label for="stream">' . __( 'Stream (VideoID)', 'oipm' ) . '</label></th>
+                                <td><input type="text" name="stream" id="stream" class="regular-text" value="' .
+                                    ( $stream ? $stream->tv_stream : '' ) . '" /></td>
+                            </tr>
+                            <tr>
+                                <th><label for="lang">' . __( 'Language', 'oipm' ) . '</label></th>
+                                <td><input type="text" name="lang" id="lang" class="regular-text" value="' .
+                                    ( $stream ? $stream->tv_lang : '' ) . '" /></td>
+                            </tr>
+                            <tr>
+                                <th><label for="start_date">' . __( 'Start time (UTC)', 'oipm' ) . '</label></th>
+                                <td>
+                                    <input type="date" name="start_date" id="start_date" class="regular-text" value="' . $start[0] . '" />
+                                    <input type="time" name="start_time" id="start_time" class="regular-text" value="' . $start[1] . '" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><label for="end_date">' . __( 'End time (UTC)', 'oipm' ) . '</label></th>
+                                <td>
+                                    <input type="date" name="end_date" id="end_date" class="regular-text" value="' . $end[0] . '" />
+                                    <input type="time" name="end_time" id="end_time" class="regular-text" value="' . $end[1] . '" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><label for="vod">' . __( 'VOD available?', 'oipm' ) . '</label></th>
+                                <td>
+                                    <input type="checkbox" name="vod" id="vod" class="regular-text" value="1" ' . (
+                                        $stream && $stream->tv_vod ? 'checked' : ''
+                                    ) . ' />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>';
+
+        }
+
+    }
+
+    add_action( 'edit_form_after_editor', '__stream_editor' );
+
 ?>

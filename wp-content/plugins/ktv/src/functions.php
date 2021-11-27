@@ -39,6 +39,24 @@
 
     }
 
+    function __get_stream( int $ID ) {
+
+        global $wpdb, $ktvdb;
+
+        return $wpdb->get_row( '
+            SELECT  *
+            FROM    ' . $ktvdb . '
+            WHERE   tv_id = ' . $ID
+        );
+
+    }
+
+    function __update_stream() {
+
+        global $wpdb, $ktvdb;
+
+    }
+
     /* 
      * initiate Komed TV plugin
      * 
