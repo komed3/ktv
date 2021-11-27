@@ -8,6 +8,8 @@
 
         __use_style( 'stream' );
 
+        __use_script( 'clock' );
+
         echo '<div class="stream">
                 <div class="video-container">
                     <iframe class="video"
@@ -17,7 +19,7 @@
                     </iframe>
                 </div>
                 <div class="info-container">
-                    <div class="time" data-timestamp="' . ( strtotime( $stream->tv_end ) - time() ) . '"></div>
+                    <div class="clock" time="' . ( time() - strtotime( $stream->tv_start ) ) . '"></div>
                     <div class="terms">
                         ' . implode( '', $terms ) . '
                     </div>

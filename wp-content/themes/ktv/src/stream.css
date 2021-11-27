@@ -17,6 +17,14 @@
     width: var( --container-width );
 }
 
+.stream .info-container .clock {
+    float: right;
+}
+
+.stream .info-container .clock .span {
+    font-weight: 900;
+}
+
 .stream .info-container h1 {
     margin: 0.5em 33% 1em 0;
     font-size: 2em;

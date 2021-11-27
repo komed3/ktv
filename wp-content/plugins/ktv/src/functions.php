@@ -84,14 +84,27 @@
 
     }
 
-    function __use_plugin( string $name ) {
+    function __use_plugin( string $plugin ) {
 
-        $path = __DIR__ . '/plugins/' . $name . '.php';
+        $path = __DIR__ . '/plugins/' . $plugin . '.php';
 
         if( file_exists( $path ) )
             require_once $path;
         
-        else die( 'ERROR: plugin ' . $name . ' not found.' );
+        else die( 'ERROR: plugin ' . $plugin . ' not found.' );
+
+    }
+
+    function __use_script(
+        string $script,
+        array $required = [ 'jquery' ]
+    ) {
+
+        wp_enqueue_script(
+            $script,
+            plugin_dir_url( __FILE__ ) . 'scripts/' . $script . '.js',
+            $required
+        );
 
     }
 
