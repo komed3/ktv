@@ -6,7 +6,7 @@
      */
 
     $ktvdb = $wpdb->prefix . 'ktv';
-    $ktvdb_vers = '2.0';
+    $ktvdb_vers = '2.0.01';
 
     /* 
      * core functions
@@ -53,7 +53,7 @@
     add_action( 'init', '__init' );
 
     /* 
-     * install Komed TV plugin
+     * install / upgrade Komed TV plugin
      * 
      */
 
@@ -65,14 +65,21 @@
             
             require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 
-            dbDelta( 'CREATE TABLE ' . $ktvdb . ' (
-                tv_id int NOT NULL,
-                tv_stream varbinary(32) NOT NULL,
-                tv_lang varbinary(8) NOT NULL,
-                tv_start timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                tv_end timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                tv_vod tinyint(1) NOT NULL DEFAULT "0"
-            ) ' . $wpdb->get_charset_collate() );
+            $wpdb->query( '
+                CREATE TABLE IF NOT EXISTS ' . $ktvdb . ' (
+                    tv_id int NOT NULL,
+                    tv_stream varbinary(32) NOT NULL,
+                    tv_lang varbinary(8) NOT NULL,
+                    tv_start timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                    tv_end timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                    tv_vod tinyint(1) NOT NULL DEFAULT "0"
+                ) ' . $wpdb->get_charset_collate()
+            );
+
+            $wpdb->query( '
+                ALTER TABLE ' . $ktvdb . '
+                    ADD PRIMARY KEY ( tv_id );
+            ' );
 
             update_option( '__ktvdb_vers', $ktvdb_vers );
 
