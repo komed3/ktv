@@ -66,6 +66,7 @@ header .header-inner nav ul {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
+    padding: 0;
 }
 
 header .header-inner nav ul li {
@@ -97,6 +98,7 @@ footer .footer-inner nav ul {
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
+    padding: 0;
 }
 
 footer .footer-inner nav ul li {
