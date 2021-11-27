@@ -17,7 +17,7 @@
                 </h1>
                 <nav role="navigation">
                     <?php wp_nav_menu( [
-                        'theme_location' => 'header-menu',
+                        'theme_location' => 'primary',
                         'container' => '',
                         'fallback_cb' => false
                     ] ); ?>
