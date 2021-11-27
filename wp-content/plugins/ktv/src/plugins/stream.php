@@ -13,9 +13,17 @@
         $terms[] = $end > time()
             ? __get_live_link()
             : __get_vod_link( $post );
-        
+
         __use_style( 'stream' );
+
         __use_script( 'clock' );
+        __use_script( 'reload' );
+
+        wp_add_inline_script(
+            'reload',
+            'var __reload = ' . ( (int) ( $end - time() + 10 ) * 1000 ) . ';',
+            'before'
+        );
 
         echo '<div class="stream">
                 <div class="video-container">
@@ -56,9 +64,6 @@
 
         global $wpdb, $ktvdb;
 
-        __use_style( 'preview' );
-        __use_script( 'clock' );
-
         if( $stream = $wpdb->get_row( '
             SELECT   *
             FROM     ' . $ktvdb . '
@@ -67,6 +72,17 @@
         ' ) ) {
 
             $post = get_post( $stream->tv_id );
+
+            __use_style( 'preview' );
+
+            __use_script( 'clock' );
+            __use_script( 'reload' );
+
+            wp_add_inline_script(
+                'reload',
+                'var __reload = ' . ( (int) ( strtotime( $stream->tv_start ) - time() + 10 ) * 1000 ) . ';',
+                'before'
+            );
 
             echo '<div class="preview">
                 ' . ( !empty( $stream->tv_stream )
