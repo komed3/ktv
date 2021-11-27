@@ -23,6 +23,20 @@
 
     }
 
+    function __credits( bool $echo = false ) {
+
+        $credits = sprintf(
+            __( 'Copyright &copy; %s by %s. Powered by komed3.', 'ktv' ),
+            date_i18n( 'Y' ),
+            get_bloginfo( 'title' )
+        );
+
+        if( $echo ) echo $credits;
+
+        return $credits;
+
+    }
+
     /* 
      * initiate Komed TV plugin
      * 
