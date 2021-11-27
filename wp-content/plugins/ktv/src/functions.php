@@ -1,5 +1,7 @@
 <?php
 
+    require_once __DIR__ . '/admin/stream.php';
+
     /*
      * global vars
      * 
