@@ -7,6 +7,7 @@
     --text-color: #f9f9f9;
     --accent-color: #d15055;
     --light-gray: #2d3036;
+    --dark-bg: #000000;
 }
 
 body {
@@ -112,4 +113,22 @@ footer .footer-inner .credits {
     letter-spacing: 1px;
     font-size: 0.8em;
     opacity: 0.7;
+}
+
+/* main */
+
+.term:link, .term:visited, .term:active,
+.tag:link, .tag:visited, .tag:active {
+    display: inline-block;
+    margin: 0 0.5em 0.5em 0;
+    padding: 0.3em 0.6em;
+    text-transform: uppercase;
+    color: var(--text-color);
+    background: var( --accent-color );
+    border-radius: 0.3em;
+}
+
+.tag:link, .tag:visited, .tag:active {
+    background: var( --light-gray );
+    font-size: 0.8em;
 }

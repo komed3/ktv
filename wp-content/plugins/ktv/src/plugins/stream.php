@@ -6,12 +6,15 @@
         $terms = __stream_terms( $stream, $post );
         $tags = __stream_tags( $stream, $post );
 
+        __use_style( 'stream' );
+
         echo '<div class="stream">
                 <div class="video-container">
                     <iframe class="video"
-                        src="https://www.youtube.com/embed/' . $stream->tv_stream . '"
-                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
+                        src="https://www.youtube.com/embed/' . $stream->tv_stream . '" frameborder="0" allowfullscreen
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                        ' . __( 'This function is not supported by your browser.', 'ktv' ) . '
+                    </iframe>
                 </div>
                 <div class="info-container">
                     <div class="time" data-timestamp="' . ( strtotime( $stream->tv_end ) - time() ) . '"></div>

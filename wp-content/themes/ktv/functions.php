@@ -1,17 +1,24 @@
 <?php
 
+    function __use_style(
+        string $style,
+        array $required = [ 'ktv', 'global' ]
+    ) {
+
+        wp_enqueue_style(
+            $style,
+            get_stylesheet_directory_uri() .
+                '/src/' . $style . '.css',
+            $required
+        );
+
+    }
+
     function __theme_styles() {
 
-        wp_enqueue_style(
-            'ktv',
-            get_stylesheet_directory_uri() . '/style.css'
-        );
+        wp_enqueue_style( 'ktv', get_stylesheet_directory_uri() . '/style.css' );
 
-        wp_enqueue_style(
-            'ktv-global',
-            get_stylesheet_directory_uri() . '/src/global.css',
-            [ 'ktv' ]
-        );
+        __use_style( 'global', [ 'ktv' ] );
 
     }
 
