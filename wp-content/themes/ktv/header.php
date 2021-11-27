@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+    <head>
+        <meta charset="<?php bloginfo( 'charset' ); ?>">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="<?php __icon( true ); ?>">
+        <?php wp_head(); ?>
+    </head>
+    <body <?php body_class(); ?>>
+        <header id="header" class="clearfix" role="banner">
+            <div class="header-inner">
+                <h1 class="site-title">
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+                        <img src="<?php __icon( true ); ?>" />
+                        <span><?php bloginfo( 'title' ); ?></span>
+                    </a>
+                </h1>
+                <nav role="navigation">
+                    <?php wp_nav_menu( [
+                        'theme_location' => 'header-menu',
+                        'container' => '',
+                        'fallback_cb' => false
+                    ] ); ?>
+                </nav>
+            </div>
+        </header>
+        <div id="wrapper" class="clearfix">

@@ -1,5 +1,32 @@
 <?php
 
+    /*
+     * global vars
+     * 
+     */
+
+    
+    
+    /* 
+     * core functions
+     * 
+     */
+
+    function __icon( bool $echo = false ) {
+
+        $icon = home_url( '/favicon.png' );
+
+        if( $echo ) echo esc_url( $icon );
+
+        return $icon;
+
+    }
+    
+    /* 
+     * initiate Komed TV plugin
+     * 
+     */
+
     function __init() {
         
         # disable password recovery
