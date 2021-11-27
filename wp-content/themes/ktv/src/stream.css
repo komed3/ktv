@@ -31,9 +31,19 @@
     font-size: 2em;
 }
 
+.stream .info-container .external span {
+    padding-right: 0.5em;
+}
+
 .stream .info-container p {
     margin: 0 33% 1em 0;
     line-height: 1.5;
     font-size: 1.3em;
     opacity: 0.8;
+}
+
+.stream .info-container .external {
+    margin-top: 0.5em;
+    text-transform: uppercase;
+    font-size: 0.9em;
 }
