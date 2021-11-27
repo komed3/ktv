@@ -39,6 +39,30 @@
 
     }
 
+    function __active_stream() {
+
+        global $wpdb, $ktvdb;
+
+        return $wpdb->get_row( '
+            SELECT  *
+            FROM    ' . $ktvdb . '
+            WHERE   tv_start < "' . date( 'Y-m-d H:i:s' ) . '"
+            AND     tv_end > "' . date( 'Y-m-d H:i:s' ) . '"
+        ' );
+
+    }
+
+    function __use_plugin( string $name ) {
+
+        $path = __DIR__ . '/plugins/' . $name . '.php';
+
+        if( file_exists( $path ) )
+            require_once $path;
+        
+        else die( 'ERROR: plugin ' . $name . ' not found.' );
+
+    }
+
     function __get_stream( int $ID ) {
 
         global $wpdb, $ktvdb;
