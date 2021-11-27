@@ -52,6 +52,38 @@
 
     }
 
+    function __stream_terms( $stream, $post ) {
+
+        $terms = [];
+
+        foreach( [ 'channel', 'category' ] as $taxonomy ) {
+
+            foreach( get_the_terms( $post, $taxonomy ) as $term ) {
+
+                $terms[] = '<a href="' . get_term_link( $term, $taxonomy ) . '" class="term ' . $term->taxonomy . '">' . $term->name . '</a>';
+
+            }
+
+        }
+
+        return $terms;
+
+    }
+
+    function __stream_tags( $stream, $post ) {
+
+        $tags = [];
+
+        foreach( get_the_tags( $post ) as $tag ) {
+
+            $tags[] = '<a href="' . get_tag_link( $tag ) . '" class="tag">' . $tag->name . '</a>';
+
+        }
+
+        return $tags;
+
+    }
+
     function __use_plugin( string $name ) {
 
         $path = __DIR__ . '/plugins/' . $name . '.php';
