@@ -51,9 +51,34 @@
 
     }
 
-    function __update_stream() {
+    function __update_stream(
+        int $ID,
+        string $video_id,
+        string $lang,
+        int $start,
+        int $end,
+        bool $vod
+    ) {
 
         global $wpdb, $ktvdb;
+
+        return $wpdb->query( '
+            INSERT INTO ' . $ktvdb . ' (
+                tv_id, tv_stream, tv_lang, tv_start, tv_end, tv_vod
+            ) VALUES (
+                "' . $ID . '",
+                "' . $video_id . '",
+                "' . $lang . '",
+                "' . date( 'Y-m-d H:i:s', $start ) . '",
+                "' . date( 'Y-m-d H:i:s', $end ) . '",
+                "' . intval( $vod ) . '"
+            ) ON DUPLICATE KEY UPDATE
+                tv_stream = "' . $video_id . '",
+                tv_lang =   "' . $lang . '",
+                tv_start =  "' . date( 'Y-m-d H:i:s', $start ) . '",
+                tv_end =    "' . date( 'Y-m-d H:i:s', $end ) . '",
+                tv_vod =    "' . intval( $vod ) . '"
+        ' );
 
     }
 

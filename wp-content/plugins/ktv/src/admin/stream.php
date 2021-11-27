@@ -25,7 +25,7 @@
                 'title', 'editor'
             ],
             'taxonomies' => [
-                'channel', 'category', 'tags'
+                'channel', 'category', 'post_tag'
             ],
             'menu_icon' => 'dashicons-video-alt3'
         ] );
@@ -115,5 +115,30 @@
     }
 
     add_action( 'edit_form_after_editor', '__stream_editor' );
+
+    function __save_stream( $post_id ) {
+
+        if( $post_id && count( $_POST ) > 0 ) {
+
+            $post = get_post( $post_id );
+
+            if( $post->post_type === 'stream' ) {
+
+                __update_stream(
+                    $post_id,
+                    $_POST['stream'],
+                    $_POST['lang'],
+                    strtotime( $_POST['start_date'] . ' ' . $_POST['start_time'] ),
+                    strtotime( $_POST['end_date'] . ' ' . $_POST['end_time'] ),
+                    isset( $_POST['vod'] )
+                );
+
+            }
+
+        }
+
+    }
+
+    add_action( 'save_post', '__save_stream' );
 
 ?>
