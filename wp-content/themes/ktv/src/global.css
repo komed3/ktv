@@ -1,6 +1,7 @@
 @import url( https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap );
 
 :root {
+    --container-width: 1400px;
     --text-sans: 'Roboto', 'Arial', sans-serif;
     --site-bg: #161d27;
     --text-color: #f9f9f9;
@@ -24,14 +25,52 @@ a:hover {
     color: var( --accent-color );
 }
 
+header {
+    background: var( --light-gray );
+}
+
 header .header-inner {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
-    background: var( --light-gray );
+    margin: 0 auto;
+    width: var( --container-width );
+    padding: 12px 0;
 }
 
 header .header-inner h1 {
     margin: 0;
+    font-size: 2em;
+}
+
+header .header-inner h1 a {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    text-transform: uppercase;
+    color: var( --accent-color );
+}
+
+header .header-inner h1 a img {
+    width: 80px;
+    margin-right: 16px;
+}
+
+header .header-inner nav ul {
+    list-style: none;
+    list-style-type: none;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+header .header-inner nav ul li {
+    padding: 0 8px;
+}
+
+header .header-inner nav ul li a {
+    text-transform: uppercase;
+    font-size: 1.2em;
+    font-weight: 900;
 }
