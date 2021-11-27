@@ -10,10 +10,9 @@
         $terms = __stream_terms( $stream, $post );
         $tags = __stream_tags( $stream, $post );
 
-        if( $end > time() )
-            $terms[] = '<a href="#" class="term live">' . __( 'Live', 'ktv' ) . '</a>';
-        else
-            $terms[] = '<a href="#" class="term vod">' . __( 'VOD', 'ktv' ) . '</a>';
+        $terms[] = $end > time()
+            ? __get_live_link()
+            : __get_vod_link( $post );
         
         __use_style( 'stream' );
         __use_script( 'clock' );

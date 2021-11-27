@@ -13,7 +13,23 @@
 }
 
 .shedule .events .event {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: stretch;
+    margin-bottom: 2em;
+    padding: 2em;
+    background: var( --light-gray );
+    border-radius: 1em;
+}
+
+.shedule .events .event .clock {
+    float: right;
+}
+
+.shedule .events .event h3 {
+    margin: 0.4em 33% 0.2em 0;
+    font-size: 1.6em;
+}
+
+.shedule .events .event p {
+    margin: 0 33% 0 0;
+    font-size: 1.1em;
+    opacity: 0.8;
 }

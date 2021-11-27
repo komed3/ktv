@@ -22,22 +22,15 @@
             $terms = __stream_terms( $stream, $post );
 
             if( strtotime( $stream->tv_start ) < time() )
-                $terms[] = '<a href="#" class="term live">' . __( 'Live', 'ktv' ) . '</a>';
+                $terms[] = __get_live_link();
 
             $events[] = '<div class="event">
-                <div class="image">
-                    ' . ( !empty( $stream->tv_stream )
-                        ? '<img src="https://i.ytimg.com/vi/' . $stream->tv_stream . '/hq720.jpg" />'
-                        : '' ) . '
+                <div class="clock" time="' . ( time() - strtotime( $stream->tv_start ) ) . '"></div>
+                <div class="terms">
+                    ' . implode( '', $terms ) . '
                 </div>
-                <div class="info">
-                    <div class="clock" time="' . ( time() - strtotime( $stream->tv_start ) ) . '"></div>
-                    <div class="terms">
-                        ' . implode( '', $terms ) . '
-                    </div>
-                    <h3>' . get_the_title( $post ) . '</h3>
-                    <p>' . implode( ' ', array_slice( explode( ' ', $post->post_content ), 0, 15 ) ) . ' &hellip;</p>
-                </div>
+                <h3>' . get_the_title( $post ) . '</h3>
+                <p>' . implode( ' ', array_slice( explode( ' ', $post->post_content ), 0, 30 ) ) . ' &hellip;</p>
             </div>';
 
         }

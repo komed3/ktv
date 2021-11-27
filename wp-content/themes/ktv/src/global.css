@@ -137,7 +137,6 @@ footer .footer-inner .credits {
 
 .term.live, .term.vod {
     background: var( --live-color );
-    pointer-events: none;
 }
 
 .tag:link, .tag:visited, .tag:hover {

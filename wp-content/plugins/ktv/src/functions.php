@@ -151,6 +151,18 @@
 
     }
 
+    function __get_live_link() {
+
+        return '<a href="' . home_url( '/' ) . '" class="term live">' . __( 'Live', 'ktv' ) . '</a>';
+
+    }
+
+    function __get_vod_link( $post ) {
+
+        return '<a href="' . get_permalink( $post ) . '" class="term vod">' . __( 'VOD', 'ktv' ) . '</a>';
+
+    }
+
     /* 
      * initiate Komed TV plugin
      * 
