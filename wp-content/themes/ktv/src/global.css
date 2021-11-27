@@ -6,6 +6,7 @@
     --site-bg: #161d27;
     --text-color: #f9f9f9;
     --accent-color: #d15055;
+    --live-color: #77b978;
     --light-gray: #2d3036;
     --dark-bg: #000000;
 }
@@ -132,6 +133,11 @@ footer .footer-inner .credits {
 
 .term:hover, .tag:hover {
     opacity: 0.9;
+}
+
+.term.live, .term.vod {
+    background: var( --live-color );
+    pointer-events: none;
 }
 
 .tag:link, .tag:visited, .tag:hover {

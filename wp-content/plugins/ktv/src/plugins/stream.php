@@ -3,11 +3,19 @@
     function __output_stream( $stream ) {
 
         $post = get_post( $stream->tv_id );
+
+        $start = strtotime( $stream->tv_start );
+        $end = strtotime( $stream->tv_end );
+
         $terms = __stream_terms( $stream, $post );
         $tags = __stream_tags( $stream, $post );
 
+        if( $end > time() )
+            $terms[] = '<a href="#" class="term live">' . __( 'Live', 'ktv' ) . '</a>';
+        else
+            $terms[] = '<a href="#" class="term vod">' . __( 'VOD', 'ktv' ) . '</a>';
+        
         __use_style( 'stream' );
-
         __use_script( 'clock' );
 
         echo '<div class="stream">
@@ -19,12 +27,13 @@
                     </iframe>
                 </div>
                 <div class="info-container">
-                    ' . ( strtotime( $stream->tv_end ) > time()
-                            ? '<div class="clock" time="' . ( time() - strtotime( $stream->tv_start ) ) . '"></div>'
+                    ' . ( $end > time()
+                            ? '<div class="clock" time="' . ( time() - $start ) . '"></div>'
                             : '<div class="time">' . date_i18n(
                                    __( 'h:i A — F jS, Y', 'ktv' ),
-                                   strtotime( $stream->tv_start )
-                               ) . '</div>' ) . '
+                                   $start
+                               ) . '</div>'
+                    ) . '
                     <div class="terms">
                         ' . implode( '', $terms ) . '
                     </div>
