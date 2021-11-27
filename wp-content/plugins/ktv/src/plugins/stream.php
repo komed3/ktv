@@ -52,4 +52,36 @@
 
     }
 
+    function __preview() {
+
+        global $wpdb, $ktvdb;
+
+        if( $stream = $wpdb->get_row( '
+            SELECT   *
+            FROM     ' . $ktvdb . '
+            WHERE    tv_start > "' . date( 'Y-m-d H:i:s' ) . '"
+            ORDER BY tv_start ASC
+        ' ) ) {
+
+            $post = get_post( $stream->tv_id );
+
+            echo '<div class="preview">
+                ' . ( !empty( $stream->tv_stream )
+                    ? '<div class="image" style="background-image: url( https://i.ytimg.com/vi/' . $stream->tv_stream . '/hq720.jpg );"></div>'
+                    : '' ) . '
+                <div class="preview-container">
+                    <div class="clock" time="' . ( time() - strtotime( $stream->tv_start ) ) . '"></div>
+                    <div class="terms">
+                        ' . implode( '', __stream_terms( $stream, $post ) ) . '
+                    </div>
+                    <h2>' . __( 'Coming soon …', 'ktv' ) . '</h2>
+                    <h1>' . get_the_title( $post ) . '</h1>
+                    <p>' . implode( ' ', array_slice( explode( ' ', $post->post_content ), 0, 30 ) ) . ' &hellip;</p>
+                </div>
+            </div>';
+
+        }
+
+    }
+
 ?>

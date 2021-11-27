@@ -16,6 +16,8 @@
 
     } else {
 
+        __preview();
+
     }
 
     __shedule( 3, false );

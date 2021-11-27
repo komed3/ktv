@@ -14,13 +14,13 @@
         else if( abs < 259200 )
             txt = Math.round( abs / 3600 ) + ' Stunden';
         else if( abs < 864000 )
-            txt = Math.round( abs / 86400 ) + ' Tage';
+            txt = Math.round( abs / 86400 ) + ' Tagen';
         else if( abs < 3628800 )
             txt = Math.round( abs / 604800 ) + ' Wochen';
         else if( abs < 47336400 )
-            txt = Math.round( abs / 2629800 ) + ' Monate';
+            txt = Math.round( abs / 2629800 ) + ' Monaten';
         else
-            txt = Math.round( abs / 31557600 ) + ' Jahre';
+            txt = Math.round( abs / 31557600 ) + ' Jahren';
   
         $( element ).html( ( sec < 0 ? 'in' : 'seit' ) + ' <span>' + txt + '</span>' )
                     .attr( 'time', sec + 1 );
