@@ -17,6 +17,7 @@
                 </h1>
                 <?php if( !is_front_page() && __active_stream() ) { ?>
                     <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="on-air">
+                        <span class="pulse"></span>
                         <?php _e( 'on air', 'ktv' ) ?>
                     </a>
                 <?php } ?>
