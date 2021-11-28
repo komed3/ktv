@@ -45,11 +45,11 @@
                         ' . implode( '', $terms ) . '
                     </div>
                     <h1>' . get_the_title( $post ) . '</h1>
-                    <div class="external">
+                    ' . ( !empty( $stream->tv_stream ) ? '<div class="external">
                         <a href="https://www.youtube.com/watch?v=' . $stream->tv_stream . '">
                             <span>►</span>' . __( 'Watch on YouTube', 'ktv' ) . '
                         </a>
-                    </div>
+                    </div>' : '' ) . '
                     <p>' . apply_filters( 'the_content', $post->post_content ) . '</p>
                     <div class="tags">
                         ' . implode( '', $tags ) . '
