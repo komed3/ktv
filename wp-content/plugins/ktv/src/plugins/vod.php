@@ -21,7 +21,7 @@
                 <div class="video">
                     <div class="image" style="background-image: url( https://i.ytimg.com/vi/' . $stream->tv_stream . '/hq720.jpg );"></div>
                     <div class="info">
-                        <div class="time">' . date_i18n(
+                        <div class="time">' . wp_date(
                             __( 'm/d/Y, h:i A', 'ktv' ),
                             strtotime( $stream->tv_start )
                         ) . '</div>

@@ -40,7 +40,7 @@
                 <div class="info-container">
                     ' . ( $end > time()
                             ? '<div class="clock" time="' . ( time() - $start ) . '"></div>'
-                            : '<div class="time">' . date_i18n(
+                            : '<div class="time">' . wp_date(
                                    __( 'h:i A — F jS, Y', 'ktv' ),
                                    $start
                                ) . '</div>'

@@ -29,7 +29,7 @@
 
         $credits = sprintf(
             __( 'Copyright &copy; %s by %s. Powered by komed3.', 'ktv' ),
-            date_i18n( 'Y' ),
+            wp_date( 'Y' ),
             get_bloginfo( 'title' )
         );
 
