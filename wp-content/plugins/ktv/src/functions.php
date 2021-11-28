@@ -39,6 +39,39 @@
 
     }
 
+    function __shortcodes( bool $echo = false ) {
+
+        $shortcodes = [];
+
+        foreach( [
+            'M' => __( 'Mute sound', 'ktv' ),
+            'K' => __( 'Play/Pause', 'ktv' ),
+            'F' => __( 'Fullscreen', 'ktv' ),
+            'ECS' => __( 'Close fullscreen', 'ktv' ),
+            '←' => __( '5 sec backwards', 'ktv' ),
+            '→' => __( '5 sec forwards', 'ktv' ),
+            '↑' => __( 'Increase sound 5%', 'ktv' ),
+            '↓' => __( 'Decrease sound 5%', 'ktv' )
+        ] as $key => $description ) {
+
+            $shortcodes[] = '<li>
+                <code>' . $key . '</code>
+                <span>' . $description . '</span>
+            </li>';
+
+        }
+
+        $content = '<h3>' . __( 'Keyboard shortcodes', 'ktv' ) . '</h3>
+        <ul class="shortcodes-list">
+            ' . implode( '', $shortcodes ) . '
+        </ul>';
+
+        if( $echo ) echo $content;
+
+        return $content;
+
+    }
+
     function __active_stream() {
 
         global $wpdb, $ktvdb;

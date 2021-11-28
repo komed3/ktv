@@ -11,6 +11,9 @@
                     <div class="credits">
                         <?php __credits( true ); ?>
                     </div>
+                    <div class="shortcodes">
+                        <?php __shortcodes( true ) ?>
+                    </div>
                 </div>
             </footer>
         </div>
