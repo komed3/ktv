@@ -1,1 +1,6 @@
-<?php wp_redirect( home_url( '/' ) ); exit; ?>
+<?php
+
+    wp_redirect( home_url( '/' ) );
+    exit;
+
+?>
