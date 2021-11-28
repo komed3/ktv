@@ -1,7 +1,8 @@
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ktv\n"
-"POT-Creation-Date: 2021-11-28 13:08+0100\n"
+"POT-Creation-Date: 2021-11-28 18:50+0100\n"
 "PO-Revision-Date: 2021-11-28 13:08+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -112,11 +113,47 @@ msgstr ""
 msgid "Copyright &copy; %s by %s. Powered by komed3."
 msgstr ""
 
-#: wp-content/plugins/ktv/src/functions.php:176
+#: wp-content/plugins/ktv/src/functions.php:47
+msgid "Mute sound"
+msgstr ""
+
+#: wp-content/plugins/ktv/src/functions.php:48
+msgid "Play/Pause"
+msgstr ""
+
+#: wp-content/plugins/ktv/src/functions.php:49
+msgid "Fullscreen"
+msgstr ""
+
+#: wp-content/plugins/ktv/src/functions.php:50
+msgid "Close fullscreen"
+msgstr ""
+
+#: wp-content/plugins/ktv/src/functions.php:51
+msgid "5 sec backwards"
+msgstr ""
+
+#: wp-content/plugins/ktv/src/functions.php:52
+msgid "5 sec forwards"
+msgstr ""
+
+#: wp-content/plugins/ktv/src/functions.php:53
+msgid "Increase sound 5%"
+msgstr ""
+
+#: wp-content/plugins/ktv/src/functions.php:54
+msgid "Decrease sound 5%"
+msgstr ""
+
+#: wp-content/plugins/ktv/src/functions.php:64
+msgid "Keyboard shortcodes"
+msgstr ""
+
+#: wp-content/plugins/ktv/src/functions.php:209
 msgid "Live"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/functions.php:182
+#: wp-content/plugins/ktv/src/functions.php:215
 #: wp-content/plugins/ktv/src/plugins/vod.php:25
 msgid "VOD"
 msgstr ""
