@@ -15,6 +15,12 @@
                         <span><?php bloginfo( 'title' ); ?></span>
                     </a>
                 </h1>
+                <?php if( !is_front_page() && __active_stream() ) { ?>
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="on-air">
+                        <?php _e( 'on air', 'ktv' ) ?>
+                    </a>
+                <?php } ?>
+                <div class="clear">&nbsp;</div>
                 <nav role="navigation">
                     <?php wp_nav_menu( [
                         'theme_location' => 'primary',

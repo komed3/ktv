@@ -34,19 +34,20 @@
 
         $post = get_post( $stream->tv_id );
 
-        return '<a href="' . get_permalink( $post ) . '">
-            <div class="video">
-                ' . __stream_img( $stream ) . '
-                <div class="info">
-                    <div class="time">' . wp_date(
-                        __( 'm/d/Y, h:i A', 'ktv' ),
-                        strtotime( $stream->tv_start )
-                    ) . '</div>
-                    <h3>' . get_the_title( $post ) . '</h3>
-                    <p>' . implode( ' ', array_slice( explode( ' ', $post->post_content ), 0, 20 ) ) . ' &hellip;</p>
+        return '<div class="video">
+            ' . __stream_img( $stream ) . '
+            <div class="info">
+                <div class="time">' . wp_date(
+                    __( 'm/d/Y, h:i A', 'ktv' ),
+                    strtotime( $stream->tv_start )
+                ) . '</div>
+                <h3><a href="' . get_permalink( $post ) . '">' . get_the_title( $post ) . '</a></h3>
+                <p>' . implode( ' ', array_slice( explode( ' ', $post->post_content ), 0, 20 ) ) . ' &hellip;</p>
+                <div class="terms">
+                    ' . implode( '', __stream_terms( $stream, $post ) ) . '
                 </div>
             </div>
-        </a>';
+        </div>';
 
     }
 
