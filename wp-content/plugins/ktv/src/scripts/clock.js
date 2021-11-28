@@ -5,7 +5,7 @@
         sec = parseInt( $( element ).attr( 'time' ) );
         abs = Math.abs( sec );
 
-        if( abs < 30 )
+        if( abs < 15 )
             txt = 'wenigen Sekunden';
         else if( abs < 90 )
             txt = Math.round( abs ) + ' Sekunden';

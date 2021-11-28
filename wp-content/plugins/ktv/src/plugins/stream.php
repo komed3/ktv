@@ -27,7 +27,7 @@
 
             wp_add_inline_script(
                 'reload',
-                'var __reload = ' . ( (int) ( $end - time() + 10 ) * 1000 ) . ';',
+                'var __reload = ' . ( (int) ( $end - time() + 5 ) * 1000 ) . ';',
                 'before'
             );
 
@@ -84,7 +84,7 @@
 
             wp_add_inline_script(
                 'reload',
-                'var __reload = ' . ( (int) ( strtotime( $stream->tv_start ) - time() + 10 ) * 1000 ) . ';',
+                'var __reload = ' . ( (int) ( strtotime( $stream->tv_start ) - time() + 5 ) * 1000 ) . ';',
                 'before'
             );
 
