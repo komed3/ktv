@@ -17,7 +17,7 @@
                 'search_items' => __( 'Search streams', 'oipm' )
             ],
             'public' => true,
-            'has_archive' => false,
+            'has_archive' => true,
             'rewrite' => [
                 'slug' => 'stream'
             ],
