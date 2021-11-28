@@ -120,6 +120,10 @@ footer .footer-inner .credits {
 
 /* main */
 
+main {
+    min-height: 70vh;
+}
+
 a.term:link, a.term:visited, a.term:hover,
 a.tag:link, a.tag:visited, a.tag:hover {
     display: inline-block;

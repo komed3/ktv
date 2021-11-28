@@ -24,4 +24,4 @@
                 </nav>
             </div>
         </header>
-        <div id="wrapper" class="clearfix">
+        <main class="clearfix">

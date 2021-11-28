@@ -25,9 +25,7 @@
                 $terms[] = __get_live_link();
 
             $events[] = '<div class="event">
-                ' . ( !empty( $stream->tv_stream )
-                    ? '<div class="image" style="background-image: url( https://i.ytimg.com/vi/' . $stream->tv_stream . '/hq720.jpg );"></div>'
-                    : '' ) . '
+                ' . __stream_img( $stream ) . '
                 <div class="info">
                     <div class="clock" time="' . ( time() - strtotime( $stream->tv_start ) ) . '"></div>
                     <div class="terms">

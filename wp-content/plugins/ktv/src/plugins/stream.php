@@ -31,11 +31,7 @@
 
         echo '<div class="stream">
                 <div class="video-container">
-                    <iframe class="video"
-                        src="https://www.youtube.com/embed/' . $stream->tv_stream . '" frameborder="0" allowfullscreen
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
-                        ' . __( 'This function is not supported by your browser.', 'ktv' ) . '
-                    </iframe>
+                    ' . __stream_iframe( $stream ) . '
                 </div>
                 <div class="info-container">
                     ' . ( $end > time()
@@ -89,9 +85,7 @@
             );
 
             echo '<div class="preview">
-                ' . ( !empty( $stream->tv_stream )
-                    ? '<div class="image" style="background-image: url( https://i.ytimg.com/vi/' . $stream->tv_stream . '/hq720.jpg );"></div>'
-                    : '' ) . '
+                ' . __stream_img( $stream ) . '
                 <div class="preview-container">
                     <div class="clock" time="' . ( time() - strtotime( $stream->tv_start ) ) . '"></div>
                     <div class="terms">
@@ -104,6 +98,16 @@
             </div>';
 
         }
+
+    }
+
+    function __stream_iframe( $stream ) {
+
+        return !empty( $stream->tv_stream ) ? '<iframe class="video"
+            src="https://www.youtube.com/embed/' . $stream->tv_stream . '" frameborder="0" allowfullscreen
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+            ' . __( 'This function is not supported by your browser.', 'ktv' ) . '
+        </iframe>' : '';
 
     }
 
