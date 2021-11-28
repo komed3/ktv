@@ -15,15 +15,19 @@
             : __get_vod_link( $post );
 
         __use_style( 'stream' );
-
         __use_script( 'clock' );
-        __use_script( 'reload' );
+        
+        if( $end > time() ) {
 
-        wp_add_inline_script(
-            'reload',
-            'var __reload = ' . ( (int) ( $end - time() + 10 ) * 1000 ) . ';',
-            'before'
-        );
+            __use_script( 'reload' );
+
+            wp_add_inline_script(
+                'reload',
+                'var __reload = ' . ( (int) ( $end - time() + 10 ) * 1000 ) . ';',
+                'before'
+            );
+
+        }
 
         echo '<div class="stream">
                 <div class="video-container">

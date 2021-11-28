@@ -108,6 +108,18 @@
 
     }
 
+    function __is_stream( int $ID ) {
+
+        global $wpdb, $ktvdb;
+
+        return $wpdb->get_var( '
+            SELECT  COUNT( tv_id )
+            FROM    ' . $ktvdb . '
+            WHERE   tv_id = ' . $ID
+        ) == 1;
+
+    }
+
     function __get_stream( int $ID ) {
 
         global $wpdb, $ktvdb;
