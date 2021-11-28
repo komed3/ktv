@@ -31,7 +31,7 @@
                     <div class="terms">
                         ' . implode( '', $terms ) . '
                     </div>
-                    <h3>' . get_the_title( $post ) . '</h3>
+                    <h3><a href="' . get_permalink( $post ) . '">' . get_the_title( $post ) . '</a></h3>
                     <p>' . implode( ' ', array_slice( explode( ' ', $post->post_content ), 0, 30 ) ) . ' &hellip;</p>
                 </div>
             </div>';
