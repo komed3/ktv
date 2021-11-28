@@ -4,7 +4,7 @@
 
         the_post();
         
-        if( $stream = __get_stream( get_the_ID() ) ) {
+        if( ( $stream = __get_stream( get_the_ID() ) ) && !!$stream->tv_vod ) {
 
             get_header();
 
