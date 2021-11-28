@@ -19,6 +19,7 @@
         wp_enqueue_style( 'ktv', get_stylesheet_directory_uri() . '/style.css' );
 
         __use_style( 'global', [ 'ktv' ] );
+        __use_style( 'mobile', [ 'ktv' ] );
 
     }
 
