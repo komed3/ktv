@@ -10,9 +10,13 @@
         $terms = __stream_terms( $stream, $post );
         $tags = __stream_tags( $stream, $post );
 
-        $terms[] = $end > time()
-            ? __get_live_link()
-            : __get_vod_link( $post );
+        if( !!$stream->tv_vod && $start < time() ) {
+
+            $terms[] = $end > time()
+                ? __get_live_link()
+                : __get_vod_link( $post );
+
+        }
 
         __use_style( 'stream' );
         __use_script( 'clock' );
