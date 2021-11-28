@@ -7,6 +7,12 @@
     font-size: 2em;
 }
 
+.vod h2 .key {
+    padding-right: 0.5em;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+
 .vod .videos {
     column-count: 3;
     column-gap: 2em;
