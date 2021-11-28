@@ -163,6 +163,14 @@
 
     }
 
+    function __stream_img( $stream ) {
+
+        return !empty( $stream->tv_stream )
+            ? '<div class="image" style="background-image: url( https://i.ytimg.com/vi/' . $stream->tv_stream . '/hq720.jpg );"></div>'
+            : '';
+
+    }
+
     function __get_live_link() {
 
         return '<a href="' . home_url( '/' ) . '" class="term live">' . __( 'Live', 'ktv' ) . '</a>';
