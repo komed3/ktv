@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ktv\n"
-"POT-Creation-Date: 2021-11-28 18:50+0100\n"
+"POT-Creation-Date: 2021-11-29 15:21+0100\n"
 "PO-Revision-Date: 2021-11-28 13:08+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -162,19 +162,19 @@ msgstr ""
 msgid "Shedule"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/plugins/stream.php:44
+#: wp-content/plugins/ktv/src/plugins/stream.php:48
 msgid "h:i A — F jS, Y"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/plugins/stream.php:54
+#: wp-content/plugins/ktv/src/plugins/stream.php:58
 msgid "Watch on YouTube"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/plugins/stream.php:98
+#: wp-content/plugins/ktv/src/plugins/stream.php:102
 msgid "Coming soon …"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/plugins/stream.php:113
+#: wp-content/plugins/ktv/src/plugins/stream.php:117
 msgid "This function is not supported by your browser."
 msgstr ""
 
