@@ -48,10 +48,10 @@
             'K' => __( 'Play/Pause', 'ktv' ),
             'F' => __( 'Fullscreen', 'ktv' ),
             'ECS' => __( 'Close fullscreen', 'ktv' ),
-            '←' => __( '5 sec backwards', 'ktv' ),
-            '→' => __( '5 sec forwards', 'ktv' ),
-            '↑' => __( 'Increase sound 5%', 'ktv' ),
-            '↓' => __( 'Decrease sound 5%', 'ktv' )
+            '⯇' => __( '5 sec backwards', 'ktv' ),
+            '⯈' => __( '5 sec forwards', 'ktv' ),
+            '⯅' => __( 'Increase sound 5%', 'ktv' ),
+            '⯆' => __( 'Decrease sound 5%', 'ktv' )
         ] as $key => $description ) {
 
             $shortcodes[] = '<li>

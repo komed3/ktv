@@ -220,6 +220,7 @@ footer .footer-inner .shortcodes ul li:nth-child( 2n + 1 ) {
 footer .footer-inner .shortcodes ul li code {
     display: block;
     padding: 0.2em 0.5em;
+    font-family: monospace;
     font-size: 1.05em;
     font-weight: 900;
     border: 1px solid var( --text-color );
