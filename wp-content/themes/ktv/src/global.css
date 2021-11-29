@@ -192,6 +192,7 @@ footer .footer-inner .shortcodes {
 footer .footer-inner .shortcodes h3 {
     text-align: center;
     text-transform: uppercase;
+    letter-spacing: 1px;
     font-size: 0.8em;
     opacity: 0.7;
 }
