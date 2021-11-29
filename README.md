@@ -1,2 +1,3 @@
 # ktv
-Komed TV plugin for WordPress
+
+TV plugin for WordPress. Embed YouTube livestreams and videos on your own website.
