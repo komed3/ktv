@@ -23,11 +23,14 @@
         
         if( $end > time() ) {
 
+            $progress = ( time() - $start ) / ( $end - $start ) * 100;
+            $duration = $end - time();
+
             __use_script( 'reload' );
 
             wp_add_inline_script(
                 'reload',
-                'var __reload = ' . ( (int) ( $end - time() + 5 ) * 1000 ) . ';',
+                'var __reload = ' . ( (int) ( $duration + 5 ) * 1000 ) . ';',
                 'before'
             );
 
@@ -39,7 +42,8 @@
                 </div>
                 <div class="info-container">
                     ' . ( $end > time()
-                            ? '<div class="clock" time="' . ( time() - $start ) . '"></div>'
+                            ? '<div class="progress"><div class="bar" style="width: ' . $progress . '%; animation-duration: ' . $duration . 's;"></div></div>' .
+                              '<div class="clock" time="' . ( time() - $start ) . '"></div>'
                             : '<div class="time">' . wp_date(
                                    __( 'h:i A — F jS, Y', 'ktv' ),
                                    $start

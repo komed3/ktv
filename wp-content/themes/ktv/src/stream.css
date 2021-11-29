@@ -14,8 +14,32 @@
 }
 
 .stream .info-container {
-    margin: 2em auto;
+    position: relative;
+    margin: 0 auto;
     width: var( --container-width );
+    padding: 2em 0;
+}
+
+.stream .progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: var( --light-gray );
+}
+
+.stream .progress .bar {
+    width: 0;
+    height: 5px;
+    background: var( --accent-color );
+    animation-name: progress-bar;
+}
+
+@keyframes progress-bar {
+    100% {
+        width: 100%;
+    }
 }
 
 .stream .info-container .clock,
