@@ -108,7 +108,7 @@
     function __stream_iframe( $stream ) {
 
         return !empty( $stream->tv_stream ) ? '<iframe class="video"
-            src="https://www.youtube.com/embed/' . $stream->tv_stream . '" frameborder="0" allowfullscreen
+            src="https://www.youtube.com/embed/' . $stream->tv_stream . '?autoplay=1" frameborder="0" allowfullscreen
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
             ' . __( 'This function is not supported by your browser.', 'ktv' ) . '
         </iframe>' : '';
