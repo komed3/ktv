@@ -10,6 +10,8 @@
             SELECT   *
             FROM     ' . $ktvdb . '
             WHERE    tv_vod = 1
+            AND      LENGTH( tv_stream ) > 0
+            AND      tv_start < "' . date( 'Y-m-d H:i:s' ) . '"
             AND      tv_end < "' . date( 'Y-m-d H:i:s' ) . '"
             ORDER BY tv_end DESC
             LIMIT    0, ' . $limit

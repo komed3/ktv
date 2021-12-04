@@ -19,6 +19,9 @@
 
             $post = get_post( $stream->tv_id );
 
+            if( $post->post_status != 'publish' )
+                continue;
+
             $terms = __stream_terms( $stream, $post );
 
             if( strtotime( $stream->tv_start ) < time() )

@@ -41,7 +41,7 @@
                     ' . __stream_iframe( $stream ) . '
                 </div>
                 <div class="info-container">
-                    ' . ( $end > time()
+                    ' . ( $start < time() && $end > time()
                             ? '<div class="progress"><div class="bar" style="width: ' . $progress . '%; animation-duration: ' . $duration . 's;"></div></div>' .
                               '<div class="clock" time="' . ( time() - $start ) . '"></div>'
                             : '<div class="time">' . wp_date(
