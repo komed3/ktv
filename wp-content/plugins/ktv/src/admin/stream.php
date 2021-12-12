@@ -141,4 +141,17 @@
 
     add_action( 'save_post', '__save_stream' );
 
+    function __delete_stream( $postid ) {
+
+        global $wpdb, $ktvbd;
+
+        $query->query( '
+            DELETE FROM ' . $ktvbd . '
+            WHERE       tv_id = ' . $postid
+        );
+
+    }
+
+    add_action( 'delete_post', '__delete_stream' );
+
 ?>
