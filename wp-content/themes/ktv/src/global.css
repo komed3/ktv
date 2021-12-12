@@ -252,7 +252,7 @@ a.tag:link, a.tag:visited, a.tag:hover {
     margin: 0 0.5em 0.5em 0;
     padding: 0.3em 0.6em;
     text-transform: uppercase;
-    color: var(--text-color);
+    color: var( --text-color );
     background: var( --accent-color );
     border-radius: 0.3em;
 }
@@ -263,6 +263,14 @@ a.term:hover, a.tag:hover {
 
 a.term.live, a.term.vod {
     background: var( --live-color );
+}
+
+a.term.language {
+    font-weight: 900;
+    color: var( --light-gray );
+    background: var( --text-color );
+    pointer-events: none;
+    opacity: 0.8;
 }
 
 a.tag:link, a.tag:visited, a.tag:hover {
