@@ -99,6 +99,9 @@
 
         }
 
+        if( !empty( $lang = $stream->tv_lang ) )
+            $terms[] = '<a href="#" class="term language">' . $lang . '</a>';
+
         return $terms;
 
     }
