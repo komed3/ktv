@@ -17,30 +17,22 @@
                     <span><?php bloginfo( 'name' ); ?></span>
                 </a>
                 <nav role="navigation">
-                    <a href="<?php echo home_url( '/' ); ?>">
-                        <span><?php _e( 'TV', 'ktv' ); ?></span>
-                    </a>
-                    <a href="<?php echo home_url( '/schedule' ); ?>">
-                        <span><?php _e( 'Program', 'ktv' ); ?></span>
-                    </a>
-                    <a href="<?php echo home_url( '/vod' ); ?>">
-                        <span><?php _e( 'VOD', 'ktv' ); ?></span>
-                    </a>
+                    <?php wp_nav_menu( [
+                        'theme_location' => 'primary',
+                        'container' => '',
+                        'fallback_cb' => false
+                    ] ); ?>
                 </nav>
             </div>
         </header>
         <main role="main"></main>
         <footer>
             <nav>
-                <a href="<?php echo home_url( '/' ); ?>">
-                    <span><?php _e( 'TV', 'ktv' ); ?></span>
-                </a>
-                <a href="<?php echo home_url( '/schedule' ); ?>">
-                    <span><?php _e( 'Program', 'ktv' ); ?></span>
-                </a>
-                <a href="<?php echo home_url( '/vod' ); ?>">
-                    <span><?php _e( 'VOD', 'ktv' ); ?></span>
-                </a>
+                <?php wp_nav_menu( [
+                    'theme_location' => 'footer',
+                    'container' => '',
+                    'fallback_cb' => false
+                ] ); ?>
             </nav>
             <div class="credits">
                 <?php printf(

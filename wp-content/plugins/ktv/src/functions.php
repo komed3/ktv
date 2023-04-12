@@ -103,7 +103,7 @@
 
     add_action( 'init', function () {
 
-        # login is required
+        /* login is required */
 
         $url = ( isset( $_SERVER['HTTPS'] ) && 'on' === $_SERVER['HTTPS'] ? 'https://' : 'http://' ) .
             $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
@@ -119,11 +119,11 @@
 
         }
 
-        # remove admin bar
+        /* remove admin bar */
 
         add_filter( 'show_admin_bar', '__return_false' );
 
-        # disable password recovery
+        /* disable password recovery */
 
         if( !is_admin() ) {
 
@@ -131,7 +131,7 @@
 
         }
 
-        # remove dashboard access
+        /* remove dashboard access */
 
         if( is_admin() && !defined( 'DOING_AJAX' ) &&
             !current_user_can( 'manage_options' ) ) {

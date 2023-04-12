@@ -2,6 +2,13 @@
 
     add_action( 'init', function () {
 
+        /* register menus */
+
+        register_nav_menus( [
+            'primary' => __( 'Primary', 'ktv' ),
+            'footer' => __( 'Footer', 'ktv' )
+        ] );
+
         /* remove unused code */
 
         remove_action( 'wp_head', 'wp_generator' );
