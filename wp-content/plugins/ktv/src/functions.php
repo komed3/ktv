@@ -103,6 +103,22 @@
 
     add_action( 'init', function () {
 
+        # login is required
+
+        $url = ( isset( $_SERVER['HTTPS'] ) && 'on' === $_SERVER['HTTPS'] ? 'https://' : 'http://' ) .
+            $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+
+        if( !is_user_logged_in() &&
+            !( defined( 'DOING_AJAX' ) && DOING_AJAX ) &&
+            !( defined( 'DOING_CRON' ) && DOING_CRON ) &&
+            !( defined( 'WP_CLI' ) && WP_CLI ) &&
+            !( preg_match( '/wp-login\.php/', $url ) ) ) {
+
+            wp_safe_redirect( home_URL( '/wp-login.php' ), 302 );
+            exit;
+
+        }
+
         # remove admin bar
 
         add_filter( 'show_admin_bar', '__return_false' );

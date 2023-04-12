@@ -10,12 +10,26 @@
     </head>
     <body <?php body_class(); ?>>
         <?php wp_body_open(); ?>
-        <header role="banner">
-            ...
+        <header id="header" class="clearfix" role="banner">
+            <div class="header-inner">
+                <a href="<?php echo home_url( '/' ); ?>" class="site-title">
+                    <img src="<?php bloginfo( 'wpurl' ); ?>/favicon.png">
+                    <span><?php bloginfo( 'name' ); ?></span>
+                </a>
+                <nav role="navigation">
+                    <a href="<?php echo home_url( '/' ); ?>">
+                        <span><?php _e( 'TV', 'bm' ); ?></span>
+                    </a>
+                    <a href="<?php echo home_url( '/schedule' ); ?>">
+                        <span><?php _e( 'Program', 'bm' ); ?></span>
+                    </a>
+                    <a href="<?php echo home_url( '/vod' ); ?>">
+                        <span><?php _e( 'VOD', 'bm' ); ?></span>
+                    </a>
+                </nav>
+            </div>
         </header>
-        <main role="main">
-            ...
-        </main>
+        <main role="main"></main>
         <footer>
             ...
         </footer>
