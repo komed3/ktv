@@ -70,7 +70,12 @@ nav a:hover,
     left: 0;
     width: 0;
     height: 3px;
-    background: var( --ktv-accent );
+    background: linear-gradient(
+        to right,
+        var( --ktv-accent ) 0%,
+        var( --ktv-accent ) 90%,
+        var( --ktv-text ) 100%
+    );
     box-shadow: 0 0 10px rgba( 0 0 0 / 0.5 );
     opacity: 0;
     transition: width 250ms ease-out, opacity 50ms;
