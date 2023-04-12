@@ -63,6 +63,8 @@ jQuery( document ).ready( function ( $ ) {
 
                     history.pushState( _data, '', _data.url );
 
+                    document.title = _data.title + ' — K3TV';
+
                     $( 'html, body' ).attr( 'page', _data.page );
 
                     $( 'main' ).html( _data.content );

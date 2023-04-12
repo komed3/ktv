@@ -11,6 +11,7 @@
 
                 $page = 'live';
                 $url = 'live';
+                $title = __( 'On Air', 'bm' );
 
                 $content = '';
 
@@ -20,6 +21,7 @@
 
                 $page = 'schedule';
                 $url = 'schedule';
+                $title = __( 'Schedule', 'bm' );
 
                 $content = '<div class="schedule">
                     ' . implode( '', array_map( function ( $stream ) use ( $ktvdb ) {
@@ -42,6 +44,7 @@
         echo json_encode( [
             'page' => $page,
             'url' => $url,
+            'title' => $title,
             'content' => $content
         ], JSON_NUMERIC_CHECK );
 

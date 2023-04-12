@@ -78,13 +78,17 @@ nav a:hover,
 
 /* header */
 
+header {
+    background: var( --ktv-gray );
+}
+
 header .header-inner {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
     gap: 32px;
-    padding: 12px var( --ktv-padding );
+    padding: 24px var( --ktv-padding );
     text-transform: uppercase;
 }
 
@@ -175,4 +179,10 @@ footer .keycodes ul li span {
     padding: 0 16px;
     letter-spacing: 1px;
     font-size: 14px;
+}
+
+/* main + content */
+
+main {
+    min-height: 100vh;
 }
