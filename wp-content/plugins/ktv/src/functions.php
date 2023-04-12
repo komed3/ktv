@@ -66,6 +66,21 @@
 
     }
 
+    function __stream_clock( $stream ) {
+
+        $now = current_time( 'timestamp' );
+
+        if( ( $ts = strtotime( $stream->tv_start ) ) > $now ||
+            ( $ts = strtotime( $stream->tv_end ) ) > $now ) {
+
+            return '<clock time="' . $ts . '"></clock>';
+
+        }
+
+        return '';
+
+    }
+
     function __update_stream(
         int $ID,
         string $video_id,

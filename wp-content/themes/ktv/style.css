@@ -18,8 +18,9 @@
     --ktv-text: #ffffff;
 
     --ktv-accent: #d15055;
+    --ktv-accent2: #ae363c;
 
-    --ktv-padding: 100px;
+    --ktv-padding: 240px;
 
 }
 
@@ -30,6 +31,11 @@
 a {
     text-decoration: none;
     color: inherit;
+    transition: all 250ms;
+}
+
+a:hover {
+    color: var( --ktv-accent )
 }
 
 body {
@@ -51,14 +57,12 @@ nav {
 
 nav a {
     font-weight: 900;
-    transition: all 250ms;
 }
 
-nav a:hover,
 [page="live"] a[page="live"],
 [page="schedule"] a[page="schedule"],
 [page="vod"] a[page="vod"],
-[page="stream"] a[page="vod"] {
+[page="watch"] a[page="vod"] {
     color: var( --ktv-accent );
 }
 
@@ -73,7 +77,7 @@ nav a:hover,
     background: linear-gradient(
         to right,
         var( --ktv-accent ) 0%,
-        var( --ktv-accent ) 90%,
+        var( --ktv-accent2 ) 90%,
         var( --ktv-text ) 100%
     );
     box-shadow: 0 0 10px rgba( 0 0 0 / 0.5 );
@@ -110,6 +114,10 @@ header .header-inner .site-title {
 header .header-inner .site-title img {
     width: 52px;
     height: 52px;
+}
+
+header .header-inner .site-title b {
+    color: var( --ktv-accent2 );
 }
 
 header .header-inner nav a {
@@ -190,4 +198,102 @@ footer .keycodes ul li span {
 
 main {
     min-height: 100vh;
+}
+
+.content {
+    margin: 64px var( --ktv-padding );
+}
+
+.page-title {
+    margin: 64px 0 32px 0;
+    font-size: 26px;
+    font-weight: 900;
+}
+
+/* tag list */
+
+.tag-list {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    gap: 6px;
+}
+
+.tag-list > * {
+    padding: 6px 10px;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    background: var( --ktv-gray );
+    border-radius: 3px;
+}
+
+.tag-list a {
+    background: var( --ktv-accent );
+}
+
+.tag-list a:hover {
+    color: inherit;
+    opacity: 0.8;
+}
+
+.tag-list lang {
+    color: var( --ktv-site );
+    background: var( --ktv-text );
+}
+
+/* schedule */
+
+.schedule {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 32px;
+}
+
+.schedule .video {
+    position: relative;
+    padding: 32px;
+    background: var( --ktv-gray );
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.schedule .video .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.schedule .video .meta {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 64px;
+}
+
+.schedule .video h3 {
+    position: relative;
+    margin: 24px 0 6px 0;
+    font-size: 22px;
+    font-weight: 900;
+    z-index: 1;
+}
+
+.schedule .video p {
+    position: relative;
+    margin: 0;
+    max-width: 70%;
+    line-height: 1.4;
+    font-size: 16px;
+    opacity: 0.7;
+    z-index: 1;
 }
