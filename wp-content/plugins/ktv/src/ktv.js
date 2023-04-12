@@ -88,9 +88,15 @@ jQuery( document ).ready( function ( $ ) {
         e.stopImmediatePropagation();
         e.stopPropagation();
 
-        __load( {
-            page: $( this ).attr( 'page' )
+        let dataload = {};
+
+        $.each( this.attributes, ( _i, attr ) => {
+
+            dataload[ attr.name ] = attr.value;
+
         } );
+
+        __load( dataload );
 
     } );
 

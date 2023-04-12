@@ -17,6 +17,22 @@
 
                 break;
 
+            case 'watch':
+
+                $stream = __get_stream( $_POST['vid'] );
+                $post = get_post( $stream->tv_id );
+
+                $page = 'watch';
+                $url = 'watch/' . $_POST['vid'];
+                $title = sprintf(
+                    __( 'Watch: %s', 'bm' ),
+                    get_the_title( $post )
+                );
+
+                $content = '<div class="content"></div>';
+
+                break;
+
             case 'schedule':
 
                 $page = 'schedule';

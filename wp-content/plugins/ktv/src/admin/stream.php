@@ -17,10 +17,7 @@
                 'search_items' => __( 'Search streams', 'ktv' )
             ],
             'public' => true,
-            'has_archive' => true,
-            'rewrite' => [
-                'slug' => 'stream'
-            ],
+            'has_archive' => false,
             'supports' => [
                 'title', 'editor'
             ],

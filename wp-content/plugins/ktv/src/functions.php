@@ -19,15 +19,16 @@
      * 
      */
 
-    function __get_stream( int $ID ) {
+    function __get_stream( $ID ) {
 
         global $wpdb, $ktvdb;
 
         return $wpdb->get_row( '
             SELECT  *
             FROM    ' . $ktvdb . '
-            WHERE   tv_id = ' . $ID
-        );
+            WHERE   tv_id = "' . $ID . '"
+            OR      tv_stream = "' . $ID . '"
+        ' );
 
     }
 
@@ -50,8 +51,8 @@
         return $wpdb->get_row( '
             SELECT  *
             FROM    ' . $ktvdb . '
-            WHERE   tv_start < "' . date( 'Y-m-d H:i:s' ) . '"
-            AND     tv_end > "' . date( 'Y-m-d H:i:s' ) . '"
+            WHERE   tv_start < "' . date_i18n( 'Y-m-d H:i:s' ) . '"
+            AND     tv_end > "' . date_i18n( 'Y-m-d H:i:s' ) . '"
         ' );
 
     }
