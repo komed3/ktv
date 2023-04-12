@@ -3,18 +3,18 @@
     add_action( 'init', function () {
 
         register_post_type( 'stream', [
-            'label' => __( 'Streams', 'bm' ),
-            'description' => __( 'Streams', 'bm' ),
+            'label' => __( 'Streams', 'ktv' ),
+            'description' => __( 'Streams', 'ktv' ),
             'labels' => [
-                'name' => __( 'Streams', 'bm' ),
-                'singular_name' => __( 'Stream', 'bm' ),
-                'menu_name' => __( 'Streams', 'bm' ),
-                'all_items' => __( 'All streams', 'bm' ),
-                'view_item' => __( 'View stream', 'bm' ),
-                'add_new_item' => __( 'Add new stream', 'bm' ),
-                'edit_item' => __( 'Edit stream', 'bm' ),
-                'update_item' => __( 'Update stream', 'bm' ),
-                'search_items' => __( 'Search streams', 'bm' )
+                'name' => __( 'Streams', 'ktv' ),
+                'singular_name' => __( 'Stream', 'ktv' ),
+                'menu_name' => __( 'Streams', 'ktv' ),
+                'all_items' => __( 'All streams', 'ktv' ),
+                'view_item' => __( 'View stream', 'ktv' ),
+                'add_new_item' => __( 'Add new stream', 'ktv' ),
+                'edit_item' => __( 'Edit stream', 'ktv' ),
+                'update_item' => __( 'Update stream', 'ktv' ),
+                'search_items' => __( 'Search streams', 'ktv' )
             ],
             'public' => true,
             'has_archive' => true,

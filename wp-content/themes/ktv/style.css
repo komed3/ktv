@@ -9,7 +9,7 @@
  * Text Domain: ktv
  */
 
-@import url( https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap );
+@import url( 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap' );
 
 :root {
 
@@ -80,4 +80,90 @@ header .header-inner nav a {
 
 header .header-inner nav a:hover {
     color: var( --ktv-accent );
+}
+
+/* footer */
+
+footer {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 64px;
+    padding: 64px var( --ktv-padding );
+    text-transform: uppercase;
+    background: var( --ktv-gray );
+}
+
+footer nav {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 24px;
+}
+
+footer nav a {
+    font-weight: 900;
+    transition: all 250ms;
+}
+
+footer nav a:hover {
+    color: var( --ktv-accent );
+}
+
+footer .credits {
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+footer .keycodes {
+    margin: 32px 0;
+}
+
+footer .keycodes h3 {
+    margin: 32px;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+footer .keycodes ul {
+    list-style: none;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat( 2, 1fr );
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+footer .keycodes ul li {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+footer .keycodes ul li:nth-child( 2n + 1 ) {
+    justify-content: flex-end;
+}
+
+footer .keycodes ul li code {
+    display: block;
+    padding: 4px 8px;
+    font-family: monospace;
+    font-weight: 900;
+    border: 1px solid var( --ktv-text );
+    border-radius: 4px;
+}
+
+footer .keycodes ul li:nth-child( 2n + 1 ) code {
+    order: 2;
+}
+
+footer .keycodes ul li span {
+    padding: 0 16px;
+    letter-spacing: 1px;
+    font-size: 14px;
 }

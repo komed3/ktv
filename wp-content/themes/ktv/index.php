@@ -18,20 +18,58 @@
                 </a>
                 <nav role="navigation">
                     <a href="<?php echo home_url( '/' ); ?>">
-                        <span><?php _e( 'TV', 'bm' ); ?></span>
+                        <span><?php _e( 'TV', 'ktv' ); ?></span>
                     </a>
                     <a href="<?php echo home_url( '/schedule' ); ?>">
-                        <span><?php _e( 'Program', 'bm' ); ?></span>
+                        <span><?php _e( 'Program', 'ktv' ); ?></span>
                     </a>
                     <a href="<?php echo home_url( '/vod' ); ?>">
-                        <span><?php _e( 'VOD', 'bm' ); ?></span>
+                        <span><?php _e( 'VOD', 'ktv' ); ?></span>
                     </a>
                 </nav>
             </div>
         </header>
         <main role="main"></main>
         <footer>
-            ...
+            <nav>
+                <a href="<?php echo home_url( '/' ); ?>">
+                    <span><?php _e( 'TV', 'ktv' ); ?></span>
+                </a>
+                <a href="<?php echo home_url( '/schedule' ); ?>">
+                    <span><?php _e( 'Program', 'ktv' ); ?></span>
+                </a>
+                <a href="<?php echo home_url( '/vod' ); ?>">
+                    <span><?php _e( 'VOD', 'ktv' ); ?></span>
+                </a>
+            </nav>
+            <div class="credits">
+                <?php printf(
+                    __( 'Copyright © %s by %s. Powered by <a href="">komed3</a>.', 'ktv' ),
+                    date_i18n( 'Y' ),
+                    get_bloginfo( 'name' ),
+                    'https://github.com/komed3/ktv'
+                ); ?>
+            </div>
+            <div class="keycodes">
+                <h3><?php _e( 'Keycodes', 'ktv' ); ?></h3>
+                <ul class="keycodes-list">
+                    <?php foreach( [
+                        'M' => __( 'Mute sound', 'ktv' ),
+                        'K' => __( 'Play / pause', 'ktv' ),
+                        'F' => __( 'Fullscreen', 'ktv' ),
+                        'ESC' => __( 'Close fullscreen', 'ktv' ),
+                        '⯇' => __( 'Rewind 5 sec', 'ktv' ),
+                        '⯈' => __( 'Forwards 5 sec', 'ktv' ),
+                        '⯅' => __( 'Increase sound 5%', 'ktv' ),
+                        '⯆' => __( 'Decrease sound 5%', 'ktv' )
+                    ] as $key => $label ) { ?>
+                        <li>
+                            <code><?php echo $key; ?></code>
+                            <span><?php echo $label; ?></span>
+                        </li>
+                    <?php } ?>
+                </ul>
+            </div>
         </footer>
     </body>
 </html>
