@@ -8,3 +8,16 @@
  * License: MIT
  * Text Domain: ktv
  */
+
+:root {
+
+    --ktv-site: #161d27;
+    --ktv-text: #ffffff;
+
+}
+
+body {
+    margin: 0;
+    color: var( --ktv-text );
+    background: var( --ktv-site );
+}

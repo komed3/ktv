@@ -31,7 +31,9 @@
             foreach( $rules as $rule => $rewrite ) {
 
                 if( false !== strpos( $rewrite, 'embed=true' ) ) {
+
                     unset( $rules[ $rule ] );
+
                 }
 
             }
@@ -86,6 +88,11 @@
     } );
 
     add_action( 'wp_enqueue_scripts', function () {
+
+        /* enqueue scripts & styles */
+
+        wp_enqueue_script( '__ktv', get_option( 'wpurl' ) . '/wp-content/plugins/ktv/src/ktv.min.js', [ 'jquery' ] );
+        wp_enqueue_style( '__ktv', get_template_directory_uri() . '/style.min.css' );
 
         /* remove unused scripts */
 

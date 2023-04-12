@@ -103,6 +103,10 @@
 
     add_action( 'init', function () {
 
+        # remove admin bar
+
+        add_filter( 'show_admin_bar', '__return_false' );
+
         # disable password recovery
 
         if( !is_admin() ) {
