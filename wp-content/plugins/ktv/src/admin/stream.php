@@ -102,42 +102,27 @@
 
     } );
 
-    /*function __save_stream( $post_id ) {
+    add_action( 'save_post', function ( $post_id, $post ) {
 
-        if( $post_id && count( $_POST ) > 0 ) {
+        if( $post->post_type == 'stream' ) {
 
-            $post = get_post( $post_id );
-
-            if( $post->post_type === 'stream' ) {
-
-                __update_stream(
-                    $post_id,
-                    $_POST['stream'],
-                    $_POST['lang'],
-                    strtotime( $_POST['start_date'] . ' ' . $_POST['start_time'] ),
-                    strtotime( $_POST['end_date'] . ' ' . $_POST['end_time'] ),
-                    isset( $_POST['vod'] )
-                );
-
-            }
+            __update_stream(
+                $post_id,
+                $_POST['stream'] ?? null,
+                $_POST['lang'] ?? 'en',
+                strtotime( $_POST['start_date'] . ' ' . $_POST['start_time'] ),
+                strtotime( $_POST['end_date'] . ' ' . $_POST['end_time'] ),
+                isset( $_POST['vod'] )
+            );
 
         }
 
-    }
+    }, 10, 2 );
 
-    add_action( 'save_post', '__save_stream' );
+    add_action( 'delete_post', function ( $post_id ) {
 
-    function __delete_stream( $postid ) {
+        __delete_stream( $post_id );
 
-        global $wpdb, $ktvbd;
-
-        $query->query( '
-            DELETE FROM ' . $ktvbd . '
-            WHERE       tv_id = ' . $postid
-        );
-
-    }
-
-    add_action( 'delete_post', '__delete_stream' );*/
+    } );
 
 ?>

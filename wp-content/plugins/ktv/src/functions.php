@@ -97,6 +97,19 @@
 
     }
 
+    function __delete_stream(
+        int $ID
+    ) {
+
+        global $wpdb, $ktvbd;
+
+        $query->query( '
+            DELETE FROM ' . $ktvbd . '
+            WHERE       tv_id = ' . $ID
+        );
+
+    }
+
     /**
      * initiate Komed TV plugin
      * 
