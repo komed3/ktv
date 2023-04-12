@@ -90,6 +90,8 @@ jQuery( document ).ready( function ( $ ) {
 
     } );
 
-    __load( window.location.pathname.split( '/' )[0] || 'live' );
+    __load( {
+        page: window.location.pathname.split( '/' )[1] || 'live'
+    } );
 
 } );
