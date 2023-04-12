@@ -2,7 +2,7 @@
 
     add_action( 'wp_ajax___ktv', function () {
 
-        switch( $_POST['page'] ?? 'live' ) {
+        switch( $_POST['data']['page'] ?? 'live' ) {
 
             default:
             case 'live':

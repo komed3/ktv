@@ -1,6 +1,10 @@
 jQuery( document ).ready( function ( $ ) {
 
-    var __load = function ( page ) {
+    var __refresh = null;
+
+    var __load = function ( dataload ) {
+
+        clearTimeout( __refresh );
 
         $.ajax( {
             xhr: function () {
@@ -49,17 +53,25 @@ jQuery( document ).ready( function ( $ ) {
             type: 'post',
             data: {
                 action: '__ktv',
-                page: page
+                data: dataload
             },
             success: function ( response ) {
 
                 let _data = JSON.parse( response );
 
-                history.pushState( _data, '', _data.url );
+                if( _data.content != $( 'main' ).html() ) {
 
-                $( 'html, body' ).attr( 'page', _data.page );
+                    history.pushState( _data, '', _data.url );
 
-                $( 'main' ).html( _data.content );
+                    $( 'html, body' ).attr( 'page', _data.page );
+
+                    $( 'main' ).html( _data.content );
+
+                }
+
+                __refresh = setTimeout( () => {
+                    __load( dataload );
+                }, 90000 );
 
             }
         } );
@@ -72,7 +84,9 @@ jQuery( document ).ready( function ( $ ) {
         e.stopImmediatePropagation();
         e.stopPropagation();
 
-        __load( $( this ).attr( 'page' ) );
+        __load( {
+            page: $( this ).attr( 'page' )
+        } );
 
     } );
 
