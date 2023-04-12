@@ -65,7 +65,9 @@ jQuery( document ).ready( function ( $ ) {
 
                     document.title = _data.title + ' — K3TV';
 
-                    $( 'html, body' ).attr( 'page', _data.page );
+                    $( 'html, body' ).attr( 'page', _data.page ).animate( {
+                        scrollTop: 0
+                    }, 10 );
 
                     $( 'main' ).html( _data.content );
 
