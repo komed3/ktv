@@ -38,7 +38,7 @@ body {
     background: var( --ktv-site );
 }
 
-nav ul {
+nav {
     list-style: none;
     list-style-type: none;
     display: flex;
@@ -49,14 +49,31 @@ nav ul {
     padding: 0;
 }
 
-nav ul li a {
+nav a {
     font-weight: 900;
     transition: all 250ms;
 }
 
-nav ul li.current-menu-item a,
-nav ul li a:hover {
+nav a:hover,
+[page="live"] a[page="live"],
+[page="program"] a[page="program"],
+[page="vod"] a[page="vod"],
+[page="stream"] a[page="vod"] {
     color: var( --ktv-accent );
+}
+
+/* progress */
+
+.progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var( --ktv-accent );
+    box-shadow: 0 0 10px rgba( 0 0 0 / 0.5 );
+    opacity: 0;
+    transition: width 250ms ease-out, opacity 50ms;
 }
 
 /* header */

@@ -10,29 +10,38 @@
     </head>
     <body <?php body_class(); ?>>
         <?php wp_body_open(); ?>
+        <div class="progress"></div>
         <header id="header" class="clearfix" role="banner">
             <div class="header-inner">
-                <a href="<?php echo home_url( '/' ); ?>" class="site-title">
+                <a href="#" page="live" class="site-title">
                     <img src="<?php bloginfo( 'wpurl' ); ?>/favicon.png">
                     <span><?php bloginfo( 'name' ); ?></span>
                 </a>
                 <nav role="navigation">
-                    <?php wp_nav_menu( [
-                        'theme_location' => 'primary',
-                        'container' => '',
-                        'fallback_cb' => false
-                    ] ); ?>
+                    <a href="#" page="live">
+                        <span><?php _e( 'TV', 'ktv' ); ?></span>
+                    </a>
+                    <a href="#" page="schedule">
+                        <span><?php _e( 'Program', 'ktv' ); ?></span>
+                    </a>
+                    <a href="#" page="vod">
+                        <span><?php _e( 'VOD', 'ktv' ); ?></span>
+                    </a>
                 </nav>
             </div>
         </header>
         <main role="main"></main>
         <footer>
             <nav>
-                <?php wp_nav_menu( [
-                    'theme_location' => 'footer',
-                    'container' => '',
-                    'fallback_cb' => false
-                ] ); ?>
+                <a href="#" page="live">
+                    <span><?php _e( 'TV', 'ktv' ); ?></span>
+                </a>
+                <a href="#" page="schedule">
+                    <span><?php _e( 'Program', 'ktv' ); ?></span>
+                </a>
+                <a href="#" page="vod">
+                    <span><?php _e( 'VOD', 'ktv' ); ?></span>
+                </a>
             </nav>
             <div class="credits">
                 <?php printf(
