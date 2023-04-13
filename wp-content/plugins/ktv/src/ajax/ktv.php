@@ -46,6 +46,84 @@
 
                 break;
 
+            case 'channel':
+
+                if( empty( $channel = get_term_by(
+                    'slug', $_POST['data']['channel'] ?? $_POST['data']['request'] ?? '', 'category'
+                ) ) ) {
+
+                    echo json_encode( [
+                        'redirect' => [
+                            'page' => 'vod'
+                        ]
+                    ], JSON_NUMERIC_CHECK );
+
+                    wp_die();
+
+                }
+
+                $page = 'channel';
+                $url = 'channel/' . $channel->slug;
+                $refresh = -1;
+                $title = sprintf(
+                    __( 'Channel: %s', 'bm' ),
+                    $channel->name
+                );
+
+                $content = '<div class="content">
+                    <h2 class="page-title">
+                        ' . __( 'Channel', 'bm' ) . '
+                        <span>' . $channel->name . '</span>
+                    </h2>
+                    ' . __stream_grid( get_posts( [
+                        'post_type' => 'stream',
+                        'numberposts' => 999,
+                        'category_name' => $channel->slug
+                    ] ) ) . '
+                </div>';
+
+                break;
+
+            case 'tag':
+            case 'topic':
+
+                if( empty( $topic = get_term_by(
+                    'slug', $_POST['data']['tag'] ?? $_POST['data']['topic'] ??
+                    $_POST['data']['request'] ?? '', 'post_tag'
+                ) ) ) {
+
+                    echo json_encode( [
+                        'redirect' => [
+                            'page' => 'vod'
+                        ]
+                    ], JSON_NUMERIC_CHECK );
+
+                    wp_die();
+
+                }
+
+                $page = 'topic';
+                $url = 'topic/' . $topic->slug;
+                $refresh = -1;
+                $title = sprintf(
+                    __( 'Topic: %s', 'bm' ),
+                    $topic->name
+                );
+
+                $content = '<div class="content">
+                    <h2 class="page-title">
+                        ' . __( 'Topic', 'bm' ) . '
+                        <span>' . $topic->name . '</span>
+                    </h2>
+                    ' . __stream_grid( get_posts( [
+                        'post_type' => 'stream',
+                        'numberposts' => 999,
+                        'tag' => $topic->slug
+                    ] ) ) . '
+                </div>';
+
+                break;
+
             case 'schedule':
 
                 $page = 'schedule';
@@ -58,14 +136,7 @@
                     <div class="schedule">
                         ' . implode( '', array_map( function ( $stream ) use ( $ktvdb ) {
 
-                            return '<div class="video">
-                                ' . __stream_img( $stream ) . '
-                                ' . __stream_meta( $stream ) . '
-                                <h3><a href="#" page="watch" vid="' . $stream->tv_stream . '">
-                                    ' . get_the_title( $stream->tv_id ) . '
-                                </a></h3>
-                                <p>' . get_the_excerpt( $stream->tv_id ) . '</p>
-                            </div>';
+                            return __stream_box( $stream );
 
                         }, $wpdb->get_results( '
                             SELECT   *

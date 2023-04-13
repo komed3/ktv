@@ -82,9 +82,11 @@
 
     function __stream_meta( $stream ) {
 
+        $channel = get_the_terms( $stream->tv_id, 'category' )[0];
+
         return '<div class="stream-meta">
             <div class="tag-list">
-                ' . get_the_term_list( $stream->tv_id, 'category' ) . '
+                <a href="#" page="channel" channel="' . $channel->slug . '">' . $channel->name . '</a>
                 <lang>' . strtoupper( $stream->tv_lang ) . '</lang>
             </div>
             ' . __stream_clock( $stream ) . '
@@ -99,7 +101,7 @@
             if( __is_live( $stream ) || $stream->tv_vod ) {
 
                 return '<div class="stream-viewer">
-                    <iframe class="video" src="https://www.youtube.com/embed/' . $stream->tv_stream .
+                    <iframe src="https://www.youtube.com/embed/' . $stream->tv_stream .
                         '?autoplay=1" frameborder="0" allowfullscreen="" allow="accelerometer; autoplay; ' .
                         'clipboard-write; encrypted-media; gyroscope; picture-in-picture">
                         ' . __( 'This function is not supported by this browser.', 'bm' ) . '
@@ -127,8 +129,36 @@
             <h2>' . get_the_title( $post ) . '</h2>
             <div class="desc">' . apply_filters( 'the_content', $post->post_content ) . '</div>
             <div class="tag-list mini">
-                ' . get_the_term_list( $post->ID, 'post_tag' ) . '
+                ' . implode( '', array_map( function ( $tag ) {
+                    return '<a href="#" page="tag" tag="' . $tag->slug . '">' . $tag->name . '</a>';
+                }, get_the_terms( $post->ID, 'post_tag' ) ) ) . '
             </div>
+        </div>';
+
+    }
+
+    function __stream_box( $stream ) {
+
+        return '<div class="video">
+            ' . __stream_img( $stream ) . '
+            ' . __stream_meta( $stream ) . '
+            <h3><a href="#" page="watch" vid="' . $stream->tv_id . '">
+                ' . get_the_title( $stream->tv_id ) . '
+            </a></h3>
+            <p>' . get_the_excerpt( $stream->tv_id ) . '</p>
+        </div>';
+
+    }
+
+    function __stream_grid(
+        array $streams
+    ) {
+
+        return '<div class="stream-grid">
+            ' . implode( '', array_map( function ( $item ) {
+                return empty( $stream = __get_stream( $item->ID ) )
+                    ? '' : __stream_box( $stream );
+            }, $streams ) ) . '
         </div>';
 
     }
