@@ -43,11 +43,7 @@
                     $t = get_the_title( $post )
                 );
 
-                $content = __stream_viewer( $stream ) . '
-                <div class="content">
-                    <h2 class="page-title">' . $t . '</h2>
-                    <div class="description">' . apply_filters( 'the_content', $post->post_content ) . '</div>
-                </div>';
+                $content = __stream_viewer( $stream ) . __stream_info( $stream, $post );
 
                 break;
 
@@ -65,13 +61,7 @@
 
                             return '<div class="video">
                                 ' . __stream_img( $stream ) . '
-                                <div class="meta">
-                                    <div class="tag-list">
-                                        ' . get_the_term_list( $stream->tv_id, 'category' ) . '
-                                        <lang>' . strtoupper( $stream->tv_lang ) . '</lang>
-                                    </div>
-                                    ' . __stream_clock( $stream ) . '
-                                </div>
+                                ' . __stream_meta( $stream ) . '
                                 <h3><a href="#" page="watch" vid="' . $stream->tv_stream . '">
                                     ' . get_the_title( $stream->tv_id ) . '
                                 </a></h3>

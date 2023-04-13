@@ -14,6 +14,7 @@
 :root {
 
     --ktv-site: #161d27;
+    --ktv-back: #040506;
     --ktv-gray: #2d3036;
     --ktv-text: #ffffff;
 
@@ -210,6 +211,12 @@ main {
     font-weight: 900;
 }
 
+.image {
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+
 /* tag list */
 
 .tag-list {
@@ -228,7 +235,13 @@ main {
     border-radius: 3px;
 }
 
-.tag-list a {
+.tag-list.mini > * {
+    padding: 6px 8px;
+    font-size: 13px;
+    letter-spacing: 0;
+}
+
+.tag-list:not(.mini) a {
     background: var( --ktv-accent );
 }
 
@@ -240,6 +253,53 @@ main {
 .tag-list lang {
     color: var( --ktv-site );
     background: var( --ktv-text );
+}
+
+/* stream viewer */
+
+.stream-viewer {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    margin: 0;
+    padding: 0 var( --ktv-padding );
+    background: var( --ktv-back );
+}
+
+.stream-viewer iframe,
+.stream-viewer .image {
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+}
+
+/* stream info */
+
+.stream-info {
+    padding: 24px var( --ktv-padding ) 64px;
+}
+
+.stream-info h2 {
+    margin: 24px 33% 32px 0;
+    font-size: 32px;
+    font-weight: 900;
+}
+
+.stream-info p {
+    margin: 0 33% 24px 0;
+    line-height: 1.5;
+    font-size: 18px;
+}
+
+/* stream meta */
+
+.stream-meta {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 64px;
 }
 
 /* schedule */
@@ -264,20 +324,13 @@ main {
     left: 0;
     right: 0;
     bottom: 0;
-    background-size: cover;
-    background-position: top center;
-    background-repeat: no-repeat;
     opacity: 0.1;
     z-index: 0;
 }
 
-.schedule .video .meta {
+.schedule .video .stream-meta {
     position: relative;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 64px;
+    z-index: 1;
 }
 
 .schedule .video h3 {

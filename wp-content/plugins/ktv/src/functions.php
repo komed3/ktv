@@ -57,6 +57,13 @@
 
     }
 
+    function __is_live( $stream ) {
+
+        return strtotime( $stream->tv_start ) < $now &&
+               strtotime( $stream->tv_end ) > $now;
+
+    }
+
     function __stream_img( $stream ) {
 
         return !empty( $stream->tv_stream )
@@ -78,13 +85,60 @@
 
         }
 
-        return '';
+        return date_i18n( __( 'F jS Y, g:i a', 'bm' ), $ts );
+
+    }
+
+    function __stream_meta( $stream ) {
+
+        return '<div class="stream-meta">
+            <div class="tag-list">
+                ' . get_the_term_list( $stream->tv_id, 'category' ) . '
+                <lang>' . strtoupper( $stream->tv_lang ) . '</lang>
+            </div>
+            ' . __stream_clock( $stream ) . '
+        </div>';
 
     }
 
     function __stream_viewer( $stream ) {
 
+        if( strlen( $stream->tv_stream ) > 0 ) {
+
+            if( __is_live( $stream ) || $stream->tv_vod ) {
+
+                return '<div class="stream-viewer">
+                    <iframe class="video" src="https://www.youtube.com/embed/' . $stream->tv_stream .
+                        '?autoplay=1" frameborder="0" allowfullscreen="" allow="accelerometer; autoplay; ' .
+                        'clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                        ' . __( 'This function is not supported by this browser.', 'bm' ) . '
+                    </iframe>
+                </div>';
+
+            } else {
+
+                return '<div class="stream-viewer">
+                    ' . __stream_img( $stream ) . '
+                </div>';
+
+            }
+
+        }
+
         return '';
+
+    }
+
+    function __stream_info( $stream, $post ) {
+
+        return '<div class="stream-info">
+            ' . __stream_meta( $stream ) . '
+            <h2>' . get_the_title( $post ) . '</h2>
+            <div class="desc">' . apply_filters( 'the_content', $post->post_content ) . '</div>
+            <div class="tag-list mini">
+                ' . get_the_term_list( $post->ID, 'post_tag' ) . '
+            </div>
+        </div>';
 
     }
 
