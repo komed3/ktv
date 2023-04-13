@@ -37,10 +37,7 @@
                 $page = 'watch';
                 $url = 'watch/' . $stream->tv_stream;
                 $refresh = -1;
-                $title = sprintf(
-                    __( 'Watch: %s', 'bm' ),
-                    $t = get_the_title( $post )
-                );
+                $title = get_the_title( $post );
 
                 $content = $viewer . __stream_info( $stream, $post );
 
