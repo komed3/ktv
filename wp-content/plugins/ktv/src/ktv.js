@@ -90,6 +90,47 @@ jQuery( document ).ready( function ( $ ) {
 
     };
 
+    var __clock = function () {
+
+        let curr = Date.now() - ( new Date().getTimezoneOffset() * 60000 );
+
+        $( 'clock[time]' ).each( function () {
+
+            let time = parseInt( $( this ).attr( 'time' ) ) * 1000,
+                diff = curr - time,
+                absD = Math.abs( diff ) / 1000,
+                text = '';
+
+            if( absD < 90 ) {
+
+                text = 'few Seconds';
+
+            } else if( absD < 5400 ) {
+
+                text = Math.round( absD / 60 ) + ' Minutes';
+
+            } else if( absD < 172800 ) {
+
+                text = Math.round( absD / 3600 ) + ' Hours';
+
+            } else if( absD < 7776000 ) {
+
+                text = Math.round( absD / 86400 ) + ' Days';
+
+            } else {
+
+                text = 'few Months';
+
+            }
+
+            $( this ).text( diff < 0 ? 'in ' + text : text + ' ago' );
+
+        } );
+
+        setTimeout( __clock, 999 );
+
+    };
+
     $( document ).on( 'click', 'a[page]', function ( e ) {
 
         e.preventDefault();
@@ -116,5 +157,7 @@ jQuery( document ).ready( function ( $ ) {
         page: path[1] || 'live',
         request: path[2] || null
     } );
+
+    __clock();
 
 } );

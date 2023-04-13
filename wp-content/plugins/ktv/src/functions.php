@@ -76,16 +76,7 @@
 
     function __stream_clock( $stream ) {
 
-        $now = current_time( 'timestamp' );
-
-        if( ( $ts = strtotime( $stream->tv_start ) ) > $now ||
-            ( $ts = strtotime( $stream->tv_end ) ) > $now ) {
-
-            return '<clock time="' . $ts . '"></clock>';
-
-        }
-
-        return date_i18n( __( 'F jS Y, g:i a', 'bm' ), $ts );
+        return '<clock time="' . strtotime( $stream->tv_start ) . '"></clock>';
 
     }
 

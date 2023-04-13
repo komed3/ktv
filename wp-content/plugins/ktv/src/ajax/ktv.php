@@ -20,10 +20,8 @@
 
             case 'watch':
 
-                $stream = __get_stream( $_POST['data']['vid'] ?? $_POST['data']['request'] ?? 0 );
-                $post = get_post( $stream->tv_id ?? 0 );
-
-                if( empty( $stream ) || empty( $post ) ||
+                if( empty( $stream = __get_stream( $_POST['data']['vid'] ?? $_POST['data']['request'] ?? 0 ) ) ||
+                    empty( $post = get_post( $stream->tv_id ?? 0 ) ) ||
                     empty( $viewer = __stream_viewer( $stream ) ) ) {
 
                     echo json_encode( [
