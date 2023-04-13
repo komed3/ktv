@@ -82,6 +82,12 @@
 
     }
 
+    function __stream_viewer( $stream ) {
+
+        return '';
+
+    }
+
     function __update_stream(
         int $ID,
         string $video_id,
@@ -168,6 +174,18 @@
 
             wp_redirect( home_url() );
             exit;
+
+        }
+
+        /* rewrite rules */
+
+        if( $watch = get_page_by_path( 'watch' ) ) {
+
+            add_rewrite_rule(
+                '^' . $watch->post_name . '/?(.+)/?',
+                'index.php?page_id=' . $watch->ID . '&vid=$matches[1]',
+                'top'
+            );
 
         }
 

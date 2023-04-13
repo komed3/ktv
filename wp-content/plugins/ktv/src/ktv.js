@@ -59,7 +59,11 @@ jQuery( document ).ready( function ( $ ) {
 
                 let _data = JSON.parse( response );
 
-                if( _data.content != $( 'main' ).html() ) {
+                if( 'redirect' in _data ) {
+
+                    __load( _data.redirect );
+
+                } else if( _data.content != $( 'main' ).html() ) {
 
                     history.pushState( _data, '', _data.url );
 
@@ -73,9 +77,13 @@ jQuery( document ).ready( function ( $ ) {
 
                 }
 
-                __refresh = setTimeout( () => {
-                    __load( dataload );
-                }, 90000 );
+                if( parseInt( _data.refresh || -1 ) > 1000 ) {
+
+                    __refresh = setTimeout( () => {
+                        __load( dataload );
+                    }, _data.refresh );
+
+                }
 
             }
         } );
@@ -100,8 +108,13 @@ jQuery( document ).ready( function ( $ ) {
 
     } );
 
+    /* load content */
+
+    let path = window.location.pathname.split( '/' );
+
     __load( {
-        page: window.location.pathname.split( '/' )[1] || 'live'
+        page: path[1] || 'live',
+        request: path[2] || null
     } );
 
 } );

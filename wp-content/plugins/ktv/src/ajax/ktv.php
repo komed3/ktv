@@ -11,6 +11,7 @@
 
                 $page = 'live';
                 $url = 'live';
+                $refresh = 90000;
                 $title = __( 'On Air', 'bm' );
 
                 $content = '';
@@ -19,17 +20,34 @@
 
             case 'watch':
 
-                $stream = __get_stream( $_POST['vid'] );
-                $post = get_post( $stream->tv_id );
+                $stream = __get_stream( $_POST['data']['vid'] ?? $_POST['data']['request'] ?? 0 );
+                $post = get_post( $stream->tv_id ?? 0 );
+
+                if( empty( $stream ) || empty( $post ) ) {
+
+                    echo json_encode( [
+                        'redirect' => [
+                            'page' => 'vod'
+                        ]
+                    ], JSON_NUMERIC_CHECK );
+
+                    wp_die();
+
+                }
 
                 $page = 'watch';
-                $url = 'watch/' . $_POST['vid'];
+                $url = 'watch/' . $stream->tv_stream;
+                $refresh = -1;
                 $title = sprintf(
                     __( 'Watch: %s', 'bm' ),
-                    get_the_title( $post )
+                    $t = get_the_title( $post )
                 );
 
-                $content = '<div class="content"></div>';
+                $content = __stream_viewer( $stream ) . '
+                <div class="content">
+                    <h2 class="page-title">' . $t . '</h2>
+                    <div class="description">' . apply_filters( 'the_content', $post->post_content ) . '</div>
+                </div>';
 
                 break;
 
@@ -37,6 +55,7 @@
 
                 $page = 'schedule';
                 $url = 'schedule';
+                $refresh = 90000;
                 $title = __( 'Schedule', 'bm' );
 
                 $content = '<div class="content">
@@ -75,6 +94,7 @@
         echo json_encode( [
             'page' => $page,
             'url' => home_url( '/' ) . $url,
+            'refresh' => $refresh,
             'title' => $title,
             'content' => $content
         ], JSON_NUMERIC_CHECK );
