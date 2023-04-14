@@ -40,6 +40,7 @@
                 }
 
                 $content .= '<div class="content">
+                <h2 class="page-title">' . __( 'Previous broadcasts …', 'ktv' ) . '</h2>
                     ' . __stream_grid( $wpdb->get_results( '
                         SELECT   *
                         FROM     ' . $ktvdb . '
@@ -129,9 +130,10 @@
                         <div class="container">
                             ' . implode( '', array_map( function ( $stream ) {
                                 return '<div class="event ' . ( __is_live( $stream ) ? 'live' : '' ) . '" start="' .
-                                    $stream->tv_start . '" end="' . $stream->tv_end . '">
+                                    $stream->tv_start . '" end="' . $stream->tv_end . '" title="' .
+                                    ( $stream_title = get_the_title( $stream->tv_id ) ) . '">
                                     <a href="#" page="watch" vid="' . $stream->tv_stream . '">
-                                        <h4>' . get_the_title( $stream->tv_id ) . '</h4>
+                                        <h4>' . $stream_title . '</h4>
                                         ' . ( __is_live( $stream )
                                             ? '<live>' . __( 'On Air', 'ktv' ) . '</live>'
                                             : __stream_clock( $stream )
