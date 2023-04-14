@@ -15,7 +15,7 @@
             <div class="header-inner">
                 <a href="#" page="live" class="site-title">
                     <img src="<?php bloginfo( 'wpurl' ); ?>/favicon.png">
-                    <span>K<b>3</b>TV</span>
+                    <span>k<b>3</b>TV</span>
                 </a>
                 <nav role="navigation">
                     <a href="#" page="live">

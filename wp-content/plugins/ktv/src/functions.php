@@ -135,7 +135,7 @@
                 ' . __stream_meta( $stream ) . '
                 <h2>' . __( 'Coming soon …', 'ktv' ) . '</h2>
                 <h1>' . get_the_title( $stream->tv_id ) . '</h1>
-                <p>' . get_the_excerpt( $stream->tv_id ) . '</p>
+                <p>' . wp_trim_words( get_the_excerpt( $stream->tv_id ) ) . '</p>
             </div>
         </div>';
 
@@ -165,7 +165,7 @@
                 <h3><a href="#" page="watch" vid="' . $stream->tv_id . '">
                     ' . get_the_title( $stream->tv_id ) . '
                 </a></h3>
-                <p>' . get_the_excerpt( $stream->tv_id ) . '</p>
+                <p>' . wp_trim_words( get_the_excerpt( $stream->tv_id ), 15 ) . '</p>
             </div>
         </div>';
 

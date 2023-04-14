@@ -35,7 +35,15 @@
 
                 } else {
 
-                    $content = '';
+                    $content = '<div class="stream-preview">
+                        <div class="image" style="background-image: url( ./favicon_hd.png );"></div>
+                        <div class="preview-info">
+                            <h1>' . __( 'Welcome to k3TV', 'ktv' ) . '</h1>
+                            <h2>' . __( 'Await upcoming events …', 'ktv' ) . '</h2>
+                            <p>' . __( 'Currently, there’s not much to see here. Come back later and ' .
+                                'we’ll give you all the great content you want.', 'ktv' ) . '</p>
+                        </div>
+                    </div>';
 
                 }
 
