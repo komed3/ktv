@@ -12,7 +12,7 @@
                 $page = 'live';
                 $url = 'live';
                 $refresh = 60000;
-                $title = __( 'Broadcasting. Livestreams. VOD.', 'ktv' );
+                $title = __( 'Broadcasts. Livestreams. VOD.', 'ktv' );
                 $exclude = [];
 
                 if( !empty( $stream = __active_stream() ) &&
@@ -48,6 +48,7 @@
                             'numberposts' => -1,
                             'post__not_in' => $exclude
                         ] ), 'ID' ) ) . ' )
+                        AND      tv_end <= NOW()
                         ORDER BY tv_start DESC
                         LIMIT    0, 3
                     ' ) ) . '
@@ -85,7 +86,8 @@
                             'numberposts' => -1,
                             'post__not_in' => [ $post->ID ]
                         ] ), 'ID' ) ) . ' )
-                        ORDER BY tv_start DESC
+                        AND      tv_end <= NOW()
+                        ORDER BY tv_end DESC
                         LIMIT    0, 3
                     ' ) ) . '
                 </div>';
