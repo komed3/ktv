@@ -101,7 +101,7 @@
 
     add_action( 'save_post', function ( $post_id, $post ) {
 
-        if( $post->post_type == 'stream' ) {
+        if( $post->post_type == 'stream' && count( $_POST ) ) {
 
             __update_stream(
                 $post_id,
