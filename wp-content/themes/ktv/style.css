@@ -549,9 +549,7 @@ main {
 }
 
 .schedule-content .event a clock {
-    padding-left: 4px;
     font-size: 13px;
-    border-left: 3px solid var( --ktv-accent );
 }
 
 .schedule-content .event a .live {
