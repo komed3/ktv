@@ -364,6 +364,10 @@ live {
     z-index: 0;
 }
 
+.stream-preview clock {
+    font-size: 22px;
+}
+
 .stream-preview h2 {
     opacity: 0.7;
 }
