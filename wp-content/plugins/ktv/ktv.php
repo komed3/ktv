@@ -6,7 +6,7 @@
      * Description: Komed TV plugin
      * Author: Paul Köhler (komed3)
      * Author URI: https://labs.komed3.de
-     * Version: 2.0.01 [BETA] @ 2021-11-27
+     * Version: 3.0 [BETA] @ 2023-04-12
      * License: MIT
      * Text Domain: ktv
      */

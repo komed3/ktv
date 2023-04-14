@@ -1,50 +1,111 @@
 <?php
 
-    function __use_style(
-        string $style,
-        array $required = [ 'ktv', 'global' ]
-    ) {
+    add_action( 'init', function () {
 
-        wp_enqueue_style(
-            $style,
-            get_stylesheet_directory_uri() .
-                '/src/' . $style . '.css',
-            $required
-        );
+        /* remove unused code */
 
-    }
+        remove_action( 'wp_head', 'wp_generator' );
+        remove_action( 'wp_head', 'wlwmanifest_link' );
+        remove_action( 'wp_head', 'feed_links', 2 );
+        remove_action( 'wp_head', 'feed_links_extra', 3 );
+        remove_action( 'wp_head', 'rsd_link' );
+        remove_action( 'wp_head', 'wp_shortlink_wp_head' );
+        remove_action( 'wp_head', 'adjacent_posts_rel_link' );
+        remove_action( 'wp_head', 'wp_oembed_add_discovery_links', 10 );
+        remove_action( 'wp_head', 'wp_oembed_add_host_js' );
+        remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
+        remove_action( 'rest_api_init', 'wp_oembed_register_route' );
+        remove_filter( 'pre_oembed_result', 'wp_filter_pre_oembed_result', 10 );
+        remove_filter( 'oembed_dataparse', 'wp_filter_oembed_result', 10 );
 
-    function __theme_styles() {
+        add_filter( 'embed_oembed_discover', '__return_false' );
 
-        wp_enqueue_style( 'ktv', get_stylesheet_directory_uri() . '/style.css' );
+        add_filter( 'tiny_mce_plugins', function ( $plugins ) {
 
-        __use_style( 'global', [ 'ktv' ] );
-        __use_style( 'mobile', [ 'ktv' ] );
+            return array_diff( $plugins, [ 'wpembed' ] );
 
-    }
+        } );
 
-    add_action( 'wp_enqueue_scripts', '__theme_styles' );
+        add_filter( 'rewrite_rules_array', function ( $rules ) {
 
-    function __theme_init() {
+            foreach( $rules as $rule => $rewrite ) {
 
-        register_nav_menus( [
-            'primary' => __( 'Primary', 'ktv' ),
-            'footer' => __( 'Footer', 'ktv' )
-        ] );
+                if( false !== strpos( $rewrite, 'embed=true' ) ) {
 
-        if( !is_admin() )
-            show_admin_bar( false );
+                    unset( $rules[ $rule ] );
 
-    }
+                }
 
-    add_action( 'init', '__theme_init' );
+            }
 
-    function __theme_setup() {
+            return $rules;
+
+        } );
+
+        /* remove SVG filters */
+
+        remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
+        remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
+
+        /* disable TinyMCE emojis */
+
+        remove_action( 'admin_print_styles', 'print_emoji_styles' );
+        remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+        remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+        remove_action( 'wp_print_styles', 'print_emoji_styles' );
+        remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+        remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+        remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
+
+        /* filter to remove TinyMCE emojis */
+
+        add_filter( 'tiny_mce_plugins', function ( $plugins ) {
+
+            if( is_array( $plugins ) ) {
+
+                return array_diff( $plugins, [ 'wpemoji' ] );
+
+            } else {
+
+                return [];
+
+            }
+
+        } );
+
+    } );
+
+    add_action( 'after_setup_theme', function () {
+
+        /* add theme support */
 
         add_theme_support( 'title-tag' );
 
-    }
+        /* remove theme support */
 
-    add_action( 'after_setup_theme', '__theme_setup' );
+        remove_theme_support( 'post-formats' );
+
+    } );
+
+    add_action( 'wp_enqueue_scripts', function () {
+
+        /* enqueue scripts & styles */
+
+        wp_enqueue_script( '__ktv', get_option( 'wpurl' ) . '/wp-content/plugins/ktv/src/ktv.min.js', [ 'jquery' ] );
+        wp_enqueue_style( '__ktv', get_template_directory_uri() . '/style.min.css' );
+
+        /* remove unused scripts */
+
+        wp_dequeue_script( 'wp-embed' );
+
+        /* remove unused styles */
+
+        wp_dequeue_style( 'global-styles' );
+        wp_dequeue_style( 'classic-theme-styles' );
+        wp_dequeue_style( 'wp-block-library' );
+        wp_dequeue_style( 'wp-block-library-theme' );
+        wp_dequeue_style( 'wc-blocks-style' );
+
+    } );
 
 ?>
