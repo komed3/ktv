@@ -93,7 +93,9 @@
                                     $stream->tv_start . '" end="' . $stream->tv_end . '">
                                     <a href="#" page="watch" vid="' . $stream->tv_stream . '">
                                         <h4>' . get_the_title( $stream->tv_id ) . '</h4>
-                                        ' . __stream_clock( $stream ) . '
+                                        ' . ( __is_live( $stream ) ? '<div class="live">
+                                            <dot></dot><span>' . __( 'Live now', 'bm' ) . '</span>
+                                        </div>' : __stream_clock( $stream ) ) . '
                                     </a>
                                 </div>';
                             }, $wpdb->get_results( '

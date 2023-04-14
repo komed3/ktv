@@ -553,3 +553,17 @@ main {
     font-size: 13px;
     border-left: 3px solid var( --ktv-accent );
 }
+
+.schedule-content .event a .live {
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.schedule-content .event a .live dot {
+    display: inline-block;
+    margin-right: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background: var( --ktv-accent );
+}
