@@ -11,7 +11,7 @@
 
                 $page = 'live';
                 $url = 'live';
-                $refresh = 90000;
+                $refresh = 60000;
                 $title = __( 'Broadcasting. Livestreams. VOD.', 'ktv' );
                 $exclude = [];
 

@@ -110,6 +110,7 @@ nav a {
 [page="vod"] a[page="vod"],
 [page="watch"] a[page="vod"] {
     color: var( --ktv-accent );
+    filter: brightness( 1.25 ) saturate( 1.25 );
 }
 
 /* progress */
