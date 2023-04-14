@@ -15,9 +15,10 @@
 
     --ktv-padding: 240px;
 
-    --ktv-site: #161d27;
-    --ktv-back: #040506;
-    --ktv-gray: #2d3036;
+    --ktv-site: rgba( 22 29 39 / 1 );
+    --ktv-dark: rgba( 4 5 6 / 1 );
+    --ktv-gray: rgba( 45 48 54 / 0.8 );
+    --ktv-light: rgba( 68 73 82 / 0.8 );
     --ktv-text: #ffffff;
 
     --ktv-accent: #d15055;
@@ -46,6 +47,20 @@ body {
     margin: 0;
     color: var( --ktv-text );
     background: var( --ktv-site );
+}
+
+body, body * {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+body::-webkit-scrollbar, body *::-webkit-scrollbar {
+    display: none;
 }
 
 body::before,
@@ -140,7 +155,7 @@ header .header-inner .site-title {
     font-size: 26px;
     font-weight: 900;
     color: var( --ktv-accent );
-    transition: all 250ms;
+    filter: brightness( 1.25 ) saturate( 1.25 );
 }
 
 header .header-inner .site-title img {
@@ -150,10 +165,6 @@ header .header-inner .site-title img {
 
 header .header-inner .site-title b {
     color: var( --ktv-accent2 );
-}
-
-header .header-inner .site-title:hover {
-    filter: brightness( 1.25 ) saturate( 1.25 );
 }
 
 header .header-inner nav a {
@@ -303,7 +314,7 @@ main {
     justify-content: center;
     margin: 0;
     padding: 0 var( --ktv-padding );
-    background: var( --ktv-back );
+    background: var( --ktv-dark );
 }
 
 .stream-viewer iframe,
@@ -393,3 +404,134 @@ main {
 
 /* schedule */
 
+.schedule {
+    overflow: hidden;
+}
+
+.schedule-header {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    background: var( --ktv-gray );
+    box-shadow: var( --ktv-shadow );
+    z-index: 1;
+}
+
+.schedule-header .date {
+    flex: 0 0 100px;
+    width: 100px;
+}
+
+.schedule-header .time {
+    flex: 1;
+    height: 42px;
+    padding-left: 12px;
+    line-height: 42px;
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.schedule-header .time.current {
+    background: var( --ktv-light );
+}
+
+.schedule-content {
+    height: 672px;
+    overflow-y: scroll;
+}
+
+.schedule-content .day {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: stretch;
+    height: 96px;
+}
+
+.schedule-content .day .date {
+    flex: 0 0 100px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    width: 100px;
+    font-size: 14px;
+    background: var( --ktv-gray );
+}
+
+.schedule-content .day .date ._date {
+    font-weight: 900;
+}
+
+.schedule-content .day .container {
+    position: relative;
+    flex: 1;
+}
+
+.schedule-content .day.current .date {
+    background: var( --ktv-light );
+}
+
+.schedule-content .day.current .container::before,
+.schedule-content .day.current .container::after {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.schedule-content .day.current .container::before {
+    right: 0;
+    background: var( --ktv-gray );
+    opacity: 0.25;
+    z-index: -1;
+}
+
+.schedule-content .day.current .container::after {
+    width: 2px;
+    background: var( --ktv-accent );
+}
+
+.schedule-content .event {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.schedule-content .event a {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    gap: 6px;
+    padding: 14px;
+    background: var( --ktv-gray );
+    border: 1px solid var( --ktv-light );
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.schedule-content .event a:hover {
+    color: inherit;
+}
+
+.schedule-content .event a h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.schedule-content .event a clock {
+    padding-left: 4px;
+    font-size: 13px;
+    border-left: 3px solid var( --ktv-accent );
+}

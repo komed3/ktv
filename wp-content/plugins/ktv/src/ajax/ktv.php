@@ -12,7 +12,7 @@
                 $page = 'live';
                 $url = 'live';
                 $refresh = 90000;
-                $title = __( 'On Air', 'bm' );
+                $title = __( 'On Air', 'ktv' );
 
                 $content = '';
 
@@ -60,11 +60,61 @@
                 $page = 'schedule';
                 $url = 'schedule';
                 $refresh = 90000;
-                $title = __( 'Schedule', 'bm' );
+                $title = __( 'Schedule', 'ktv' );
+
+                $curr = current_time( 'timestamp' );
+                $hour = date( 'G', $curr );
+                $hours = $days = [];
+
+                for( $h = 0; $h < 24; $h += 3 ) {
+
+                    $hours[] = '<div class="time ' . (
+                        floor( $hour / 3 ) * 3 == $h ? 'current' : ''
+                    ) . '">' . str_pad( $h, 2, '0', STR_PAD_LEFT ) . ':00</div>';
+
+                }
+
+                for( $d = strtotime( '-1 day midnight', $curr ); $d <= strtotime( '+1 day midnight', $curr ); $d += 86400 ) {
+
+                    $date = date( 'Y-m-d', $d );
+
+                    $days[] = '<div class="day ' . (
+                        $curr >= $d && $curr <= $d + 86400 ? 'current' : ''
+                    ) . '" date="' . $d . '">
+                        <div class="date">
+                            <span class="_day">' . date_i18n( 'D', $d ) . '</span>
+                            <span class="_date">' . date_i18n( 'm/d', $d ) . '</span>
+                        </div>
+                        <div class="container">
+                            ' . implode( '', array_map( function ( $stream ) {
+                                return '<div class="event" start="' . $stream->tv_start . '" end="' . $stream->tv_end . '">
+                                    <a href="#" page="watch" vid="' . $stream->tv_stream . '">
+                                        <h4>' . get_the_title( $stream->tv_id ) . '</h4>
+                                        ' . __stream_clock( $stream ) . '
+                                    </a>
+                                </div>';
+                            }, $wpdb->get_results( '
+                                SELECT  *
+                                FROM    ' . $ktvdb . '
+                                WHERE   DATE( tv_start ) = "' . $date . '"
+                                OR      DATE( tv_end ) = "' . $date . '"
+                            ' ) ) ) . '
+                        </div>
+                    </div>';
+
+                }
 
                 $content = '<div class="content">
-                    <h2 class="page-title">' . __( 'Schedule', 'bm' ) . '</h2>
-                    ...
+                    <h2 class="page-title">' . __( 'Schedule', 'ktv' ) . '</h2>
+                    <div class="schedule">
+                        <div class="schedule-header">
+                            <div class="date">&nbsp;</div>
+                            ' . implode( '', $hours ) . '
+                        </div>
+                        <div class="schedule-content">
+                            ' . implode( '', $days ) . '
+                        </div>
+                    </div>
                 </div>';
 
                 break;
@@ -74,7 +124,7 @@
                 $page = 'vod';
                 $url = 'vod';
                 $refresh = 600000;
-                $title = __( 'Videos on demand', 'bm' );
+                $title = __( 'Videos on demand', 'ktv' );
 
                 $content = '<div class="content">
                     <h2 class="page-title">' . $title . '</h2>
@@ -124,8 +174,8 @@
                 $content = '<div class="content">
                     <h2 class="page-title">
                         ' . ( $_POST['data']['page'] == 'channel'
-                            ? __( 'Channel', 'bm' )
-                            : __( 'Topic', 'bm' )
+                            ? __( 'Channel', 'ktv' )
+                            : __( 'Topic', 'ktv' )
                         ) . '
                         <span>' . $term->name . '</span>
                     </h2>

@@ -2,7 +2,7 @@ jQuery( document ).ready( function ( $ ) {
 
     var __refresh = null;
 
-    var __load = function ( dataload ) {
+    var __load = function ( dataload, scroll = true ) {
 
         clearTimeout( __refresh );
 
@@ -69,18 +69,24 @@ jQuery( document ).ready( function ( $ ) {
 
                     document.title = _data.title + ' — K3TV';
 
-                    $( 'html, body' ).attr( 'page', _data.page ).animate( {
-                        scrollTop: 0
-                    }, 10 );
+                    if( scroll ) {
+
+                        $( 'html, body' ).attr( 'page', _data.page ).animate( {
+                            scrollTop: 0
+                        }, 10 );
+
+                    }
 
                     $( 'main' ).html( _data.content );
+
+                    __schedule();
 
                 }
 
                 if( parseInt( _data.refresh || -1 ) > 1000 ) {
 
                     __refresh = setTimeout( () => {
-                        __load( dataload );
+                        __load( dataload, false );
                     }, _data.refresh );
 
                 }
@@ -135,6 +141,16 @@ jQuery( document ).ready( function ( $ ) {
         } );
 
         setTimeout( __clock, 999 );
+
+    };
+
+    var __schedule = function () {
+
+        if( $( '.schedule' ).length ) {
+
+            //
+
+        }
 
     };
 
