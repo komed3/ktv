@@ -48,17 +48,30 @@ body {
     background: var( --ktv-site );
 }
 
-body::before {
+body::before,
+body::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url( './noise.jpg' );
     background-attachment: fixed;
-    opacity: 0.025;
     mix-blend-mode: luminosity;
+}
+
+body::before {
+    background-image: url( './noise.jpg' );
+    opacity: 0.025;
+    z-index: -2;
+}
+
+body::after {
+    background-image: url( './../../../favicon_hd.png' );
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.05;
     z-index: -1;
 }
 
@@ -140,7 +153,7 @@ header .header-inner .site-title b {
 }
 
 header .header-inner .site-title:hover {
-    filter: brightness( 1.1 ) saturate( 1.1 );
+    filter: brightness( 1.25 ) saturate( 1.25 );
 }
 
 header .header-inner nav a {

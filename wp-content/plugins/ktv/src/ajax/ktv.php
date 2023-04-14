@@ -119,12 +119,7 @@
                 $page = $_POST['data']['page'] == 'channel' ? 'channel' : 'topic';
                 $url = $page . '/' . $term->slug;
                 $refresh = 600000;
-                $title = sprintf(
-                    $_POST['data']['page'] == 'channel'
-                        ? __( '@%s', 'bm' )
-                        : __( 'Topic: %s', 'bm' ),
-                    $term->name
-                );
+                $title = $term->name;
 
                 $content = '<div class="content">
                     <h2 class="page-title">
