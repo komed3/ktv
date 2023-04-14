@@ -17,8 +17,8 @@
 
     --ktv-site: rgba( 22 29 39 / 1 );
     --ktv-dark: rgba( 4 5 6 / 1 );
-    --ktv-gray: rgba( 45 48 54 / 0.8 );
-    --ktv-light: rgba( 68 73 82 / 0.8 );
+    --ktv-gray: rgba( 45 48 54 / 0.5 );
+    --ktv-light: rgba( 68 73 82 / 0.75 );
     --ktv-text: #ffffff;
 
     --ktv-accent: #d15055;
@@ -271,19 +271,12 @@ main {
 /* live */
 
 live {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    gap: 8px;
-    font-weight: 900;
-}
-
-live dot {
     display: block;
-    width: 8px;
-    height: 8px;
-    border-radius: 4px;
+    width: fit-content;
+    padding: 8px 12px;
+    font-weight: 900;
     background: var( --ktv-accent );
+    border-radius: 4px;
 }
 
 /* tag list */
@@ -343,6 +336,43 @@ live dot {
     aspect-ratio: 16/9;
 }
 
+/* stream preview */
+
+.stream-preview {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    margin: 0;
+    padding: 128px var( --ktv-padding );
+    background: var( --ktv-dark );
+}
+
+.stream-preview > * {
+    position: relative;
+    z-index: 1;
+}
+
+.stream-preview .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.25;
+    z-index: 0;
+}
+
+.stream-preview h2 {
+    opacity: 0.7;
+}
+
+.stream-preview p {
+    max-width: 65%;
+    line-height: 1.6;
+    font-size: 18px;
+}
+
 /* stream info */
 
 .stream-info {
@@ -388,6 +418,11 @@ live dot {
 
 .video .info {
     padding: 24px;
+}
+
+.video .info live {
+    padding: 6px 8px;
+    font-size: 14px;
 }
 
 .video .info .tag-list > * {
@@ -468,6 +503,7 @@ live dot {
     display: flex;
     flex-flow: row nowrap;
     align-items: stretch;
+    gap: 12px;
     height: 96px;
 }
 
@@ -503,7 +539,7 @@ live dot {
     pointer-events: none;
     position: absolute;
     top: 0;
-    left: 0;
+    left: -12px;
     bottom: 0;
 }
 
@@ -530,8 +566,8 @@ live dot {
 .schedule-content .event a {
     position: absolute;
     top: 12px;
-    left: 12px;
-    right: 12px;
+    left: 0;
+    right: 0;
     bottom: 12px;
     display: flex;
     flex-flow: column nowrap;
@@ -551,6 +587,7 @@ live dot {
     box-shadow: 0 0 6px var( --ktv-accent );
 }
 
+.schedule-content .event.live,
 .schedule-content .event a:hover {
     filter: brightness( 1.25 ) saturate( 1.25 );
 }
@@ -572,5 +609,15 @@ live dot {
 }
 
 .schedule-content .event a live {
-    gap: 6px;
+    padding: 0;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: var( --ktv-accent );
+    background: transparent;
+}
+
+/* stream preview */
+
+.stream-preview {
+    display: relative;
 }

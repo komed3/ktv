@@ -1,6 +1,7 @@
 jQuery( document ).ready( function ( $ ) {
 
     var __offset = new Date().getTimezoneOffset() * -60000,
+        __content = null,
         __refresh = null;
 
     var __load = function ( dataload, scroll = true ) {
@@ -64,7 +65,9 @@ jQuery( document ).ready( function ( $ ) {
 
                     __load( _data.redirect );
 
-                } else if( _data.content != $( 'main' ).html() ) {
+                } else if( _data.content != __content ) {
+
+                    __content = _data.content;
 
                     history.pushState( _data, '', _data.url );
 

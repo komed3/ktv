@@ -12,16 +12,53 @@
                 $page = 'live';
                 $url = 'live';
                 $refresh = 90000;
-                $title = __( 'On Air', 'ktv' );
+                $title = __( 'Broadcasting. Livestreams. VOD.', 'ktv' );
+                $exclude = [];
 
-                $content = '';
+                if( !empty( $stream = __active_stream() ) &&
+                    !empty( $post = get_post( $stream->tv_id ) ) &&
+                    !empty( $viewer = __stream_viewer( $stream ) ) ) {
+
+                    $title = sprintf( __( 'On Air — %s', 'ktv' ), get_the_title( $stream->tv_id ) );
+                    $exclude[] = $post->ID;
+
+                    $content = $viewer . __stream_info( $stream, $post );
+
+                } else if( $stream = $wpdb->get_row( '
+                    SELECT   *
+                    FROM     ' . $ktvdb . '
+                    WHERE    tv_start > "' . date_i18n( 'Y-m-d H:i:s' ) . '"
+                    ORDER BY tv_start ASC
+                ' ) ) {
+
+                    $content = __stream_preview( $stream );
+
+                } else {
+
+                    $content = '';
+
+                }
+
+                $content .= '<div class="content">
+                    ' . __stream_grid( $wpdb->get_results( '
+                        SELECT   *
+                        FROM     ' . $ktvdb . '
+                        WHERE    tv_id IN ( ' . implode( ', ', array_column( get_posts( [
+                            'post_type' => 'stream',
+                            'numberposts' => -1,
+                            'post__not_in' => $exclude
+                        ] ), 'ID' ) ) . ' )
+                        ORDER BY tv_start DESC
+                        LIMIT    0, 3
+                    ' ) ) . '
+                </div>';
 
                 break;
 
             case 'watch':
 
                 if( empty( $stream = __get_stream( $_POST['data']['vid'] ?? $_POST['data']['request'] ?? 0 ) ) ||
-                    empty( $post = get_post( $stream->tv_id ?? 0 ) ) ||
+                    empty( $post = get_post( $stream->tv_id ) ) ||
                     empty( $viewer = __stream_viewer( $stream ) ) ) {
 
                     echo json_encode( [
@@ -93,9 +130,10 @@
                                     $stream->tv_start . '" end="' . $stream->tv_end . '">
                                     <a href="#" page="watch" vid="' . $stream->tv_stream . '">
                                         <h4>' . get_the_title( $stream->tv_id ) . '</h4>
-                                        ' . ( __is_live( $stream ) ? '<live>
-                                            <dot></dot><span>' . __( 'Live now', 'ktv' ) . '</span>
-                                        </live>' : __stream_clock( $stream ) ) . '
+                                        ' . ( __is_live( $stream )
+                                            ? '<live>' . __( 'On Air', 'ktv' ) . '</live>'
+                                            : __stream_clock( $stream )
+                                        ) . '
                                     </a>
                                 </div>';
                             }, $wpdb->get_results( '

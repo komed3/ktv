@@ -91,9 +91,10 @@
                 <a href="#" page="channel" channel="' . $channel->slug . '">' . $channel->name . '</a>
                 <lang>' . strtoupper( $stream->tv_lang ) . '</lang>
             </div>
-            ' . ( __is_live( $stream ) ? '<live>
-                <dot></dot><span>' . __( 'Live now', 'ktv' ) . '</span>
-            </live>' : __stream_clock( $stream ) ) . '
+            ' . ( __is_live( $stream )
+                ? '<live>' . __( 'On Air', 'ktv' ) . '</live>'
+                : __stream_clock( $stream )
+            ) . '
         </div>';
 
     }
@@ -123,6 +124,20 @@
         }
 
         return '';
+
+    }
+
+    function __stream_preview( $stream ) {
+
+        return '<div class="stream-preview">
+            ' . __stream_img( $stream ) . '
+            <div class="preview-info">
+                ' . __stream_meta( $stream ) . '
+                <h2>' . __( 'Coming soon …', 'ktv' ) . '</h2>
+                <h1>' . get_the_title( $stream->tv_id ) . '</h1>
+                <p>' . get_the_excerpt( $stream->tv_id ) . '</p>
+            </div>
+        </div>';
 
     }
 
