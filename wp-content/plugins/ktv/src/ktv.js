@@ -116,7 +116,7 @@ jQuery( document ).ready( function ( $ ) {
 
                 extd = false;
 
-                text = diff < 0 ? 'starting soon' : 'right now';
+                text = 'starting soon';
 
             } else if( absD < 5400 ) {
 
