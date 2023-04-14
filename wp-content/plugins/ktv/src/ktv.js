@@ -1,6 +1,7 @@
 jQuery( document ).ready( function ( $ ) {
 
-    var __refresh = null;
+    var __offset = new Date().getTimezoneOffset() * -60000,
+        __refresh = null;
 
     var __load = function ( dataload, scroll = true ) {
 
@@ -98,7 +99,7 @@ jQuery( document ).ready( function ( $ ) {
 
     var __clock = function () {
 
-        let curr = Date.now() - ( new Date().getTimezoneOffset() * 60000 );
+        let curr = Date.now() + __offset;
 
         $( 'clock[time]' ).each( function () {
 
@@ -110,7 +111,9 @@ jQuery( document ).ready( function ( $ ) {
 
             if( absD < 90 ) {
 
-                text = 'few Seconds';
+                extd = false;
+
+                text = diff < 0 ? 'starting soon' : 'right now';
 
             } else if( absD < 5400 ) {
 
@@ -148,7 +151,27 @@ jQuery( document ).ready( function ( $ ) {
 
         if( $( '.schedule' ).length ) {
 
-            //
+            let schedule = $( '.schedule' ),
+                oneMill = schedule.find( '.container' ).innerWidth() / 86400000;
+
+            schedule.find( '.schedule-content' ).animate( {
+                scrollTop: schedule.find( '.day.current' ).offset().top -
+                    schedule.offset().top - 200
+            }, 10 );
+
+            schedule.find( '.event' ).each( function () {
+
+                let base = parseInt( $( this ).closest( '.day' ).attr( 'date' ) ) * 1000,
+                    dayend = base + 86400000,
+                    start = Math.max( base, ( new Date( $( this ).attr( 'start' ) ) ).getTime() + __offset ),
+                    duration = Math.min( dayend, ( new Date( $( this ).attr( 'end' ) ) ).getTime() + __offset ) - start;
+
+                $( this ).css( {
+                    left: ( start - base ) * oneMill,
+                    width: duration * oneMill
+                } );
+
+            } );
 
         }
 

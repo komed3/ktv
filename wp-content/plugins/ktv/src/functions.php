@@ -59,6 +59,8 @@
 
     function __is_live( $stream ) {
 
+        $now = current_time( 'timestamp' );
+
         return strtotime( $stream->tv_start ) < $now &&
                strtotime( $stream->tv_end ) > $now;
 
@@ -76,7 +78,7 @@
 
     function __stream_clock( $stream ) {
 
-        return '<clock time="' . strtotime( $stream->tv_start ) . '"></clock>';
+        return '<clock time="' . strtotime( $stream->tv_start ) . '">&nbsp;</clock>';
 
     }
 

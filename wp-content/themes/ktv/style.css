@@ -467,6 +467,7 @@ main {
 .schedule-content .day .container {
     position: relative;
     flex: 1;
+    border-bottom: 1px dashed var( --ktv-gray );
 }
 
 .schedule-content .day.current .date {
@@ -518,10 +519,27 @@ main {
     border: 1px solid var( --ktv-light );
     border-radius: 6px;
     overflow: hidden;
+    transition: all 250ms;
+}
+
+.schedule-content .event.live a {
+    border-color: var( --ktv-accent );
+    box-shadow: 0 0 6px var( --ktv-accent );
+}
+
+.schedule-content .event a:hover {
+    filter: brightness( 1.25 ) saturate( 1.25 );
 }
 
 .schedule-content .event a:hover {
     color: inherit;
+}
+
+.schedule-content .event a > * {
+    min-width: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .schedule-content .event a h4 {

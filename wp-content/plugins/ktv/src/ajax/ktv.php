@@ -74,7 +74,9 @@
 
                 }
 
-                for( $d = strtotime( '-1 day midnight', $curr ); $d <= strtotime( '+1 day midnight', $curr ); $d += 86400 ) {
+                for( $d = strtotime( '-2 weeks midnight', $curr );
+                     $d <= strtotime( '+4 weeks midnight', $curr );
+                     $d += 86400 ) {
 
                     $date = date( 'Y-m-d', $d );
 
@@ -87,7 +89,8 @@
                         </div>
                         <div class="container">
                             ' . implode( '', array_map( function ( $stream ) {
-                                return '<div class="event" start="' . $stream->tv_start . '" end="' . $stream->tv_end . '">
+                                return '<div class="event ' . ( __is_live( $stream ) ? 'live' : '' ) . '" start="' .
+                                    $stream->tv_start . '" end="' . $stream->tv_end . '">
                                     <a href="#" page="watch" vid="' . $stream->tv_stream . '">
                                         <h4>' . get_the_title( $stream->tv_id ) . '</h4>
                                         ' . __stream_clock( $stream ) . '
