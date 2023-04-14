@@ -268,6 +268,24 @@ main {
     background-repeat: no-repeat;
 }
 
+/* live */
+
+live {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 8px;
+    font-weight: 900;
+}
+
+live dot {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background: var( --ktv-accent );
+}
+
 /* tag list */
 
 .tag-list {
@@ -372,17 +390,22 @@ main {
     padding: 24px;
 }
 
-.video h3 {
-    margin: 24px 0 6px 0;
+.video .info .tag-list > * {
+    padding: 4px 8px;
+    font-size: 13px;
+}
+
+.video .info h3 {
+    margin: 24px 20% 6px 0;
     font-size: 22px;
     font-weight: 900;
 }
 
-.video p {
+.video .info p {
     margin: 0;
     max-width: 70%;
     line-height: 1.4;
-    font-size: 16px;
+    font-size: 15px;
     opacity: 0.7;
 }
 
@@ -394,7 +417,7 @@ main {
 }
 
 .stream-grid .video h3 {
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .stream-grid .video p {
@@ -515,6 +538,7 @@ main {
     justify-content: center;
     gap: 6px;
     padding: 14px;
+    font-size: 14px;
     background: var( --ktv-gray );
     border: 1px solid var( --ktv-light );
     border-radius: 6px;
@@ -544,24 +568,9 @@ main {
 
 .schedule-content .event a h4 {
     margin: 0;
-    font-size: 14px;
     font-weight: 900;
 }
 
-.schedule-content .event a clock {
-    font-size: 13px;
-}
-
-.schedule-content .event a .live {
-    font-size: 13px;
-    font-weight: 900;
-}
-
-.schedule-content .event a .live dot {
-    display: inline-block;
-    margin-right: 6px;
-    width: 8px;
-    height: 8px;
-    border-radius: 4px;
-    background: var( --ktv-accent );
+.schedule-content .event a live {
+    gap: 6px;
 }

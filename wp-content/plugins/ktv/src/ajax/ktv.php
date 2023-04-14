@@ -93,9 +93,9 @@
                                     $stream->tv_start . '" end="' . $stream->tv_end . '">
                                     <a href="#" page="watch" vid="' . $stream->tv_stream . '">
                                         <h4>' . get_the_title( $stream->tv_id ) . '</h4>
-                                        ' . ( __is_live( $stream ) ? '<div class="live">
+                                        ' . ( __is_live( $stream ) ? '<live>
                                             <dot></dot><span>' . __( 'Live now', 'bm' ) . '</span>
-                                        </div>' : __stream_clock( $stream ) ) . '
+                                        </live>' : __stream_clock( $stream ) ) . '
                                     </a>
                                 </div>';
                             }, $wpdb->get_results( '
@@ -152,13 +152,11 @@
             case 'tag':
             case 'topic':
 
-                $type = $_POST['data']['page'] == 'channel' ? 'category' : 'post_tag';
-
                 if( empty( $term = get_term_by(
                     'slug',
                     $_POST['data']['channel'] ?? $_POST['data']['tag'] ??
                     $_POST['data']['topic'] ?? $_POST['data']['request'] ?? '',
-                    $type
+                    $_POST['data']['page'] == 'channel' ? 'category' : 'post_tag'
                 ) ) ) {
 
                     echo json_encode( [
@@ -176,6 +174,18 @@
                 $refresh = 600000;
                 $title = $term->name;
 
+                $args = [
+                    'post_type' => 'stream',
+                    'numberposts' => -1
+                ];
+
+                $args[ [
+                    0 => 'tag',
+                    1 => 'category_name'
+                ][
+                    $_POST['data']['page'] == 'channel'
+                ] ] = $term->slug;
+
                 $content = '<div class="content">
                     <h2 class="page-title">
                         ' . ( $_POST['data']['page'] == 'channel'
@@ -187,11 +197,7 @@
                     ' . __stream_grid( $wpdb->get_results( '
                         SELECT   *
                         FROM     ' . $ktvdb . '
-                        WHERE    tv_id IN ( ' . implode( ', ', array_column( get_posts( [
-                            'post_type' => 'stream',
-                            'numberposts' => -1,
-                            $type => $term->slug
-                        ] ), 'ID' ) ) . ' )
+                        WHERE    tv_id IN ( ' . implode( ', ', array_column( get_posts( $args ), 'ID' ) ) . ' )
                         ORDER BY tv_start DESC
                         LIMIT    0, 999
                     ' ) ) . '

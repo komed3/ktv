@@ -91,7 +91,9 @@
                 <a href="#" page="channel" channel="' . $channel->slug . '">' . $channel->name . '</a>
                 <lang>' . strtoupper( $stream->tv_lang ) . '</lang>
             </div>
-            ' . __stream_clock( $stream ) . '
+            ' . ( __is_live( $stream ) ? '<live>
+                <dot></dot><span>' . __( 'Live now', 'bm' ) . '</span>
+            </live>' : __stream_clock( $stream ) ) . '
         </div>';
 
     }
