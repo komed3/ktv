@@ -166,15 +166,16 @@
 
                 break;
 
+            case 'archive':
             case 'vod':
 
                 $page = 'vod';
                 $url = 'vod';
                 $refresh = 600000;
-                $title = __( 'Videos on demand', 'ktv' );
+                $title = __( 'Archive', 'ktv' );
 
                 $content = '<div class="content">
-                    <h2 class="page-title">' . $title . '</h2>
+                    <h2 class="page-title">' . __( 'Previous broadcasts …', 'ktv' ) . '</h2>
                     ' . __stream_grid( $wpdb->get_results( '
                         SELECT   *
                         FROM     ' . $ktvdb . '
