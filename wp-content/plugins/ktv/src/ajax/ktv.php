@@ -94,7 +94,7 @@
                                     <a href="#" page="watch" vid="' . $stream->tv_stream . '">
                                         <h4>' . get_the_title( $stream->tv_id ) . '</h4>
                                         ' . ( __is_live( $stream ) ? '<live>
-                                            <dot></dot><span>' . __( 'Live now', 'bm' ) . '</span>
+                                            <dot></dot><span>' . __( 'Live now', 'ktv' ) . '</span>
                                         </live>' : __stream_clock( $stream ) ) . '
                                     </a>
                                 </div>';
