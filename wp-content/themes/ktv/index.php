@@ -22,7 +22,7 @@
                         <span><?php _e( 'TV', 'ktv' ); ?></span>
                     </a>
                     <a href="#" page="schedule">
-                        <span><?php _e( 'Program', 'ktv' ); ?></span>
+                        <span><?php _e( 'Schedule', 'ktv' ); ?></span>
                     </a>
                     <a href="#" page="vod">
                         <span><?php _e( 'VOD', 'ktv' ); ?></span>
@@ -37,7 +37,7 @@
                     <span><?php _e( 'TV', 'ktv' ); ?></span>
                 </a>
                 <a href="#" page="schedule">
-                    <span><?php _e( 'Program', 'ktv' ); ?></span>
+                    <span><?php _e( 'Schedule', 'ktv' ); ?></span>
                 </a>
                 <a href="#" page="vod">
                     <span><?php _e( 'VOD', 'ktv' ); ?></span>

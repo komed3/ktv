@@ -141,11 +141,13 @@
 
         return '<div class="video">
             ' . __stream_img( $stream ) . '
-            ' . __stream_meta( $stream ) . '
-            <h3><a href="#" page="watch" vid="' . $stream->tv_id . '">
-                ' . get_the_title( $stream->tv_id ) . '
-            </a></h3>
-            <p>' . get_the_excerpt( $stream->tv_id ) . '</p>
+            <div class="info">
+                ' . __stream_meta( $stream ) . '
+                <h3><a href="#" page="watch" vid="' . $stream->tv_id . '">
+                    ' . get_the_title( $stream->tv_id ) . '
+                </a></h3>
+                <p>' . get_the_excerpt( $stream->tv_id ) . '</p>
+            </div>
         </div>';
 
     }
@@ -155,9 +157,8 @@
     ) {
 
         return '<div class="stream-grid">
-            ' . implode( '', array_map( function ( $item ) {
-                return empty( $stream = __get_stream( $item->ID ) )
-                    ? '' : __stream_box( $stream );
+            ' . implode( '', array_map( function ( $stream ) {
+                return __stream_box( $stream );
             }, $streams ) ) . '
         </div>';
 

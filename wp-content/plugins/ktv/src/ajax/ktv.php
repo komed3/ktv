@@ -39,84 +39,18 @@
                 $refresh = -1;
                 $title = get_the_title( $post );
 
-                $content = $viewer . __stream_info( $stream, $post );
-
-                break;
-
-            case 'channel':
-
-                if( empty( $channel = get_term_by(
-                    'slug', $_POST['data']['channel'] ?? $_POST['data']['request'] ?? '', 'category'
-                ) ) ) {
-
-                    echo json_encode( [
-                        'redirect' => [
-                            'page' => 'vod'
-                        ]
-                    ], JSON_NUMERIC_CHECK );
-
-                    wp_die();
-
-                }
-
-                $page = 'channel';
-                $url = 'channel/' . $channel->slug;
-                $refresh = -1;
-                $title = sprintf(
-                    __( 'Channel: %s', 'bm' ),
-                    $channel->name
-                );
-
-                $content = '<div class="content">
-                    <h2 class="page-title">
-                        ' . __( 'Channel', 'bm' ) . '
-                        <span>' . $channel->name . '</span>
-                    </h2>
-                    ' . __stream_grid( get_posts( [
-                        'post_type' => 'stream',
-                        'numberposts' => 999,
-                        'category_name' => $channel->slug
-                    ] ) ) . '
-                </div>';
-
-                break;
-
-            case 'tag':
-            case 'topic':
-
-                if( empty( $topic = get_term_by(
-                    'slug', $_POST['data']['tag'] ?? $_POST['data']['topic'] ??
-                    $_POST['data']['request'] ?? '', 'post_tag'
-                ) ) ) {
-
-                    echo json_encode( [
-                        'redirect' => [
-                            'page' => 'vod'
-                        ]
-                    ], JSON_NUMERIC_CHECK );
-
-                    wp_die();
-
-                }
-
-                $page = 'topic';
-                $url = 'topic/' . $topic->slug;
-                $refresh = -1;
-                $title = sprintf(
-                    __( 'Topic: %s', 'bm' ),
-                    $topic->name
-                );
-
-                $content = '<div class="content">
-                    <h2 class="page-title">
-                        ' . __( 'Topic', 'bm' ) . '
-                        <span>' . $topic->name . '</span>
-                    </h2>
-                    ' . __stream_grid( get_posts( [
-                        'post_type' => 'stream',
-                        'numberposts' => 999,
-                        'tag' => $topic->slug
-                    ] ) ) . '
+                $content = $viewer . __stream_info( $stream, $post ) . '<div class="content">
+                    ' . __stream_grid( $wpdb->get_results( '
+                        SELECT   *
+                        FROM     ' . $ktvdb . '
+                        WHERE    tv_id IN ( ' . implode( ', ', array_column( get_posts( [
+                            'post_type' => 'stream',
+                            'numberposts' => -1,
+                            'post__not_in' => [ $post->ID ]
+                        ] ), 'ID' ) ) . ' )
+                        ORDER BY tv_start DESC
+                        LIMIT    0, 3
+                    ' ) ) . '
                 </div>';
 
                 break;
@@ -130,18 +64,87 @@
 
                 $content = '<div class="content">
                     <h2 class="page-title">' . __( 'Schedule', 'bm' ) . '</h2>
-                    <div class="schedule">
-                        ' . implode( '', array_map( function ( $stream ) use ( $ktvdb ) {
+                    ...
+                </div>';
 
-                            return __stream_box( $stream );
+                break;
 
-                        }, $wpdb->get_results( '
-                            SELECT   *
-                            FROM     ' . $ktvdb . '
-                            WHERE    tv_end > "' . date_i18n( 'Y-m-d H:i:s' ) . '"
-                            ORDER BY tv_start ASC, tv_end ASC
-                        ' ) ) ) . '
-                    </div>
+            case 'vod':
+
+                $page = 'vod';
+                $url = 'vod';
+                $refresh = 600000;
+                $title = __( 'Videos on demand', 'bm' );
+
+                $content = '<div class="content">
+                    <h2 class="page-title">' . $title . '</h2>
+                    ' . __stream_grid( $wpdb->get_results( '
+                        SELECT   *
+                        FROM     ' . $ktvdb . '
+                        WHERE    tv_id IN ( ' . implode( ', ', array_column( get_posts( [
+                            'post_type' => 'stream',
+                            'numberposts' => -1
+                        ] ), 'ID' ) ) . ' )
+                        AND      tv_start < NOW()
+                        ORDER BY tv_start DESC
+                        LIMIT    0, 999
+                    ' ) ) . '
+                </div>';
+
+                break;
+
+            case 'channel':
+            case 'tag':
+            case 'topic':
+
+                $type = $_POST['data']['page'] == 'channel' ? 'category' : 'post_tag';
+
+                if( empty( $term = get_term_by(
+                    'slug',
+                    $_POST['data']['channel'] ?? $_POST['data']['tag'] ??
+                    $_POST['data']['topic'] ?? $_POST['data']['request'] ?? '',
+                    $type
+                ) ) ) {
+
+                    echo json_encode( [
+                        'redirect' => [
+                            'page' => 'vod'
+                        ]
+                    ], JSON_NUMERIC_CHECK );
+
+                    wp_die();
+
+                }
+
+                $page = $_POST['data']['page'] == 'channel' ? 'channel' : 'topic';
+                $url = $page . '/' . $term->slug;
+                $refresh = 600000;
+                $title = sprintf(
+                    $_POST['data']['page'] == 'channel'
+                        ? __( '@%s', 'bm' )
+                        : __( 'Topic: %s', 'bm' ),
+                    $term->name
+                );
+
+                $content = '<div class="content">
+                    <h2 class="page-title">
+                        ' . ( $_POST['data']['page'] == 'channel'
+                            ? __( 'Channel', 'bm' )
+                            : __( 'Topic', 'bm' )
+                        ) . '
+                        <span>' . $term->name . '</span>
+                    </h2>
+                    ' . __stream_grid( $wpdb->get_results( '
+                        SELECT   *
+                        FROM     ' . $ktvdb . '
+                        WHERE    tv_id IN ( ' . implode( ', ', array_column( get_posts( [
+                            'post_type' => 'stream',
+                            'numberposts' => -1,
+                            $type => $term->slug
+                        ] ), 'ID' ) ) . ' )
+                        ORDER BY tv_start DESC
+                        LIMIT    0, 999
+                    ' ) ) . '
                 </div>';
 
                 break;

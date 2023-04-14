@@ -99,7 +99,8 @@ jQuery( document ).ready( function ( $ ) {
             let time = parseInt( $( this ).attr( 'time' ) ) * 1000,
                 diff = curr - time,
                 absD = Math.abs( diff ) / 1000,
-                text = '';
+                text = '',
+                extd = true;
 
             if( absD < 90 ) {
 
@@ -113,17 +114,23 @@ jQuery( document ).ready( function ( $ ) {
 
                 text = Math.round( absD / 3600 ) + ' Hours';
 
-            } else if( absD < 7776000 ) {
+            } else if( absD < 1209600 ) {
 
                 text = Math.round( absD / 86400 ) + ' Days';
 
             } else {
 
-                text = 'few Months';
+                extd = false;
+
+                text = '@ ' + (
+                    new Intl.DateTimeFormat( 'en-US' )
+                ).format(
+                    new Date().setTime( time )
+                );
 
             }
 
-            $( this ).text( diff < 0 ? 'in ' + text : text + ' ago' );
+            $( this ).text( extd ? ( diff < 0 ? 'in ' + text : text + ' ago' ) : text );
 
         } );
 
