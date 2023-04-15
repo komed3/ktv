@@ -621,8 +621,52 @@ live {
     background: transparent;
 }
 
-/* stream preview */
+/* mobile support */
 
-.stream-preview {
-    display: relative;
+@media all and ( max-width: 1800px ) {
+
+    :root {
+        --ktv-padding: 160px;
+    }
+
+}
+
+@media all and ( max-width: 1600px ) {
+
+    :root {
+        --ktv-padding: 80px;
+    }
+
+}
+
+@media all and ( max-width: 1200px ) {
+
+    .stream-grid {
+        column-count: 2;
+    }
+
+}
+
+@media all and ( max-width: 1000px ) {
+
+    :root {
+        --ktv-padding: 40px;
+    }
+
+}
+
+@media all and ( max-width: 800px ) {
+
+    .stream-grid {
+        column-count: 1;
+    }
+
+}
+
+@media all and ( max-width: 600px ) {
+
+    :root {
+        --ktv-padding: 24px;
+    }
+
 }
