@@ -192,6 +192,7 @@
                             'numberposts' => -1
                         ] ), 'ID' ) ) . ' )
                         AND      tv_start < NOW()
+                        AND      tv_vod = 1
                         ORDER BY tv_start DESC
                         LIMIT    0, 999
                     ' ) ) . '

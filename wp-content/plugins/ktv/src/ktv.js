@@ -134,7 +134,7 @@ jQuery( document ).ready( function ( $ ) {
 
                 extd = false;
 
-                text = '@ ' + (
+                text = (
                     new Intl.DateTimeFormat( 'en-US' )
                 ).format(
                     new Date().setTime( time )
