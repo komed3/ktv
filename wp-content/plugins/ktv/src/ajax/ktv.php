@@ -48,7 +48,7 @@
                 }
 
                 $content .= '<div class="content">
-                <h2 class="page-title">' . __( 'Previous broadcasts …', 'ktv' ) . '</h2>
+                    <h2 class="page-title">' . __( 'Previous broadcasts …', 'ktv' ) . '</h2>
                     ' . __stream_grid( $wpdb->get_results( '
                         SELECT   *
                         FROM     ' . $ktvdb . '
@@ -87,6 +87,7 @@
                 $title = get_the_title( $post );
 
                 $content = $viewer . __stream_info( $stream, $post ) . '<div class="content">
+                    <h2 class="page-title">' . __( 'Previous broadcasts …', 'ktv' ) . '</h2>
                     ' . __stream_grid( $wpdb->get_results( '
                         SELECT   *
                         FROM     ' . $ktvdb . '

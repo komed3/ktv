@@ -92,6 +92,18 @@
         /* enqueue scripts & styles */
 
         wp_enqueue_script( '__ktv', get_option( 'wpurl' ) . '/wp-content/plugins/ktv/src/ktv.min.js', [ 'jquery' ] );
+
+        wp_localize_script( '__ktv', '__ktv', [
+            'locale' => str_replace( '_', '-', get_user_locale() ),
+            'title' => __( ' — K3TV', 'ktv' ),
+            'now' => __( 'starting soon', 'ktv' ),
+            'd' => __( 'Days', 'ktv' ),
+            'h' => __( 'Hours', 'ktv' ),
+            'm' => __( 'Minutes', 'ktv' ),
+            'in' => __( 'in', 'ktv' ),
+            'ago' => __( 'ago', 'ktv' )
+        ] );
+
         wp_enqueue_style( '__ktv', get_template_directory_uri() . '/style.min.css' );
 
         /* remove unused scripts */

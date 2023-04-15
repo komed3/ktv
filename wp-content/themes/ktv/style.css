@@ -275,6 +275,7 @@ live {
     display: block;
     width: fit-content;
     padding: 8px 12px;
+    text-transform: uppercase;
     font-weight: 900;
     background: var( --ktv-accent );
     border-radius: 4px;
@@ -615,7 +616,6 @@ live {
 
 .schedule-content .event a live {
     padding: 0;
-    text-transform: uppercase;
     font-size: 14px;
     color: var( --ktv-accent );
     background: transparent;

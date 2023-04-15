@@ -71,7 +71,7 @@ jQuery( document ).ready( function ( $ ) {
 
                     history.pushState( _data, '', _data.url );
 
-                    document.title = _data.title + ' — K3TV';
+                    document.title = _data.title + __ktv.title;
 
                     if( scroll ) {
 
@@ -116,33 +116,36 @@ jQuery( document ).ready( function ( $ ) {
 
                 extd = false;
 
-                text = 'starting soon';
+                text = __ktv.now;
 
             } else if( absD < 5400 ) {
 
-                text = Math.round( absD / 60 ) + ' Minutes';
+                text = Math.round( absD / 60 ) + ' ' + __ktv.m;
 
             } else if( absD < 172800 ) {
 
-                text = Math.round( absD / 3600 ) + ' Hours';
+                text = Math.round( absD / 3600 ) + ' ' + __ktv.h;
 
             } else if( absD < 1209600 ) {
 
-                text = Math.round( absD / 86400 ) + ' Days';
+                text = Math.round( absD / 86400 ) + ' ' + __ktv.d;
 
             } else {
 
                 extd = false;
 
                 text = (
-                    new Intl.DateTimeFormat( 'en-US' )
+                    new Intl.DateTimeFormat( __ktv.locale )
                 ).format(
                     new Date().setTime( time )
                 );
 
             }
 
-            $( this ).text( extd ? ( diff < 0 ? 'in ' + text : text + ' ago' ) : text );
+            $( this ).text( extd ? ( diff < 0
+                ? __ktv.in + ' ' + text
+                : text + ' ' + __ktv.ago
+            ) : text );
 
         } );
 
