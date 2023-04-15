@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ktv\n"
-"POT-Creation-Date: 2021-11-29 15:21+0100\n"
+"POT-Creation-Date: 2023-04-15 16:23+0200\n"
 "PO-Revision-Date: 2021-11-28 13:08+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -10,9 +10,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0\n"
-"X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+"X-Poedit-Basepath: ../../..\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-SearchPath-0: .\n"
 
@@ -51,153 +51,161 @@ msgstr ""
 msgid "Search streams"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/admin/stream.php:35
-#: wp-content/plugins/ktv/src/admin/stream.php:37
-msgid "Channels"
-msgstr ""
-
-#: wp-content/plugins/ktv/src/admin/stream.php:36
-msgid "Channel"
-msgstr ""
-
-#: wp-content/plugins/ktv/src/admin/stream.php:38
-msgid "Search channels"
-msgstr ""
-
-#: wp-content/plugins/ktv/src/admin/stream.php:39
-msgid "All channels"
-msgstr ""
-
-#: wp-content/plugins/ktv/src/admin/stream.php:40
-msgid "Edit channel"
-msgstr ""
-
-#: wp-content/plugins/ktv/src/admin/stream.php:41
-msgid "Update channel"
-msgstr ""
-
-#: wp-content/plugins/ktv/src/admin/stream.php:42
-msgid "Add new channel"
-msgstr ""
-
-#: wp-content/plugins/ktv/src/admin/stream.php:43
-msgid "New channel name"
-msgstr ""
-
-#: wp-content/plugins/ktv/src/admin/stream.php:71
+#: wp-content/plugins/ktv/src/admin/stream.php:46
 msgid "Stream settings"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/admin/stream.php:77
+#: wp-content/plugins/ktv/src/admin/stream.php:52
 msgid "Stream (VideoID)"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/admin/stream.php:82
+#: wp-content/plugins/ktv/src/admin/stream.php:58
 msgid "Language"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/admin/stream.php:87
+#: wp-content/plugins/ktv/src/admin/stream.php:64
 msgid "Start time (UTC)"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/admin/stream.php:94
+#: wp-content/plugins/ktv/src/admin/stream.php:75
 msgid "End time (UTC)"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/admin/stream.php:101
+#: wp-content/plugins/ktv/src/admin/stream.php:86
 msgid "VOD available?"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/functions.php:31
+#: wp-content/plugins/ktv/src/ajax/ktv.php:15
+msgid "Broadcasts. Livestreams. VOD."
+msgstr ""
+
+#: wp-content/plugins/ktv/src/ajax/ktv.php:22
 #, php-format
-msgid "Copyright &copy; %s by %s. Powered by komed3."
+msgid "On Air — %s"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/functions.php:47
-msgid "Mute sound"
+#: wp-content/plugins/ktv/src/ajax/ktv.php:41
+msgid "Welcome to k3TV"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/functions.php:48
-msgid "Play/Pause"
+#: wp-content/plugins/ktv/src/ajax/ktv.php:42
+msgid "Await upcoming events …"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/functions.php:49
-msgid "Fullscreen"
+#: wp-content/plugins/ktv/src/ajax/ktv.php:43
+msgid "Currently, there’s not much to see here. Come back later and we’ll give you all the great content you want."
 msgstr ""
 
-#: wp-content/plugins/ktv/src/functions.php:50
-msgid "Close fullscreen"
+#: wp-content/plugins/ktv/src/ajax/ktv.php:51
+#: wp-content/plugins/ktv/src/ajax/ktv.php:90
+#: wp-content/plugins/ktv/src/ajax/ktv.php:187
+msgid "Previous broadcasts …"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/functions.php:51
-msgid "5 sec backwards"
+#: wp-content/plugins/ktv/src/ajax/ktv.php:112
+#: wp-content/plugins/ktv/src/ajax/ktv.php:164
+#: wp-content/themes/ktv/index.php:25 wp-content/themes/ktv/index.php:40
+msgid "Schedule"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/functions.php:52
-msgid "5 sec forwards"
+#: wp-content/plugins/ktv/src/ajax/ktv.php:147
+#: wp-content/plugins/ktv/src/functions.php:95
+msgid "On Air"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/functions.php:53
-msgid "Increase sound 5%"
+#: wp-content/plugins/ktv/src/ajax/ktv.php:184
+msgid "Archive"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/functions.php:54
-msgid "Decrease sound 5%"
+#: wp-content/plugins/ktv/src/ajax/ktv.php:245
+msgid "Channel"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/functions.php:64
-msgid "Keyboard shortcodes"
+#: wp-content/plugins/ktv/src/ajax/ktv.php:246
+msgid "Topic"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/functions.php:209
-msgid "Live"
+#: wp-content/plugins/ktv/src/functions.php:112
+msgid "This function is not supported by this browser."
 msgstr ""
 
-#: wp-content/plugins/ktv/src/functions.php:215
-#: wp-content/plugins/ktv/src/plugins/vod.php:25
-msgid "VOD"
-msgstr ""
-
-#: wp-content/plugins/ktv/src/plugins/shedule.php:45
-msgid "Shedule"
-msgstr ""
-
-#: wp-content/plugins/ktv/src/plugins/stream.php:48
-msgid "h:i A — F jS, Y"
-msgstr ""
-
-#: wp-content/plugins/ktv/src/plugins/stream.php:58
-msgid "Watch on YouTube"
-msgstr ""
-
-#: wp-content/plugins/ktv/src/plugins/stream.php:102
+#: wp-content/plugins/ktv/src/functions.php:136
 msgid "Coming soon …"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/plugins/stream.php:117
-msgid "This function is not supported by your browser."
+#: wp-content/themes/ktv/functions.php:98
+msgid " — K3TV"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/plugins/vod.php:41
-msgid "m/d/Y, h:i A"
+#: wp-content/themes/ktv/functions.php:99
+msgid "starting soon"
 msgstr ""
 
-#: wp-content/themes/ktv/category.php:26
-msgid "Category"
+#: wp-content/themes/ktv/functions.php:100
+msgid "Days"
 msgstr ""
 
-#: wp-content/themes/ktv/functions.php:31
-msgid "Primary"
+#: wp-content/themes/ktv/functions.php:101
+msgid "Hours"
 msgstr ""
 
-#: wp-content/themes/ktv/functions.php:32
-msgid "Footer"
+#: wp-content/themes/ktv/functions.php:102
+msgid "Minutes"
 msgstr ""
 
-#: wp-content/themes/ktv/header.php:21
-msgid "on air"
+#: wp-content/themes/ktv/functions.php:103
+msgid "in"
 msgstr ""
 
-#: wp-content/themes/ktv/tag.php:22
-msgid "Tag"
+#: wp-content/themes/ktv/functions.php:104
+msgid "ago"
+msgstr ""
+
+#: wp-content/themes/ktv/index.php:22 wp-content/themes/ktv/index.php:37
+msgid "TV"
+msgstr ""
+
+#: wp-content/themes/ktv/index.php:28 wp-content/themes/ktv/index.php:43
+msgid "VOD"
+msgstr ""
+
+#: wp-content/themes/ktv/index.php:48
+#, php-format
+msgid "Copyright © %s by %s. Powered by <a href=\"\">komed3</a>."
+msgstr ""
+
+#: wp-content/themes/ktv/index.php:55
+msgid "Keycodes"
+msgstr ""
+
+#: wp-content/themes/ktv/index.php:58
+msgid "Mute sound"
+msgstr ""
+
+#: wp-content/themes/ktv/index.php:59
+msgid "Play / pause"
+msgstr ""
+
+#: wp-content/themes/ktv/index.php:60
+msgid "Fullscreen"
+msgstr ""
+
+#: wp-content/themes/ktv/index.php:61
+msgid "Close fullscreen"
+msgstr ""
+
+#: wp-content/themes/ktv/index.php:62
+msgid "Rewind 5 sec"
+msgstr ""
+
+#: wp-content/themes/ktv/index.php:63
+msgid "Forwards 5 sec"
+msgstr ""
+
+#: wp-content/themes/ktv/index.php:64
+msgid "Increase sound 5%"
+msgstr ""
+
+#: wp-content/themes/ktv/index.php:65
+msgid "Decrease sound 5%"
 msgstr ""
