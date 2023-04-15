@@ -250,6 +250,14 @@
 
         }
 
+        /* l10n */
+
+        switch_to_locale( get_user_locale() );
+
+        setlocale( LC_ALL, get_locale() );
+
+        load_plugin_textdomain( 'ktv' );
+
         /* remove admin bar */
 
         add_filter( 'show_admin_bar', '__return_false' );
