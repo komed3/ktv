@@ -187,6 +187,7 @@ footer {
 }
 
 footer .credits {
+    text-align: center;
     font-size: 11px;
     letter-spacing: 2px;
 }
@@ -639,7 +640,20 @@ live {
 
 }
 
+@media all and ( max-width: 1400px ) {
+
+    .stream-viewer {
+        padding: 0;
+    }
+
+}
+
 @media all and ( max-width: 1200px ) {
+
+    .stream-info h2 {
+        margin-right: 20%;
+        font-size: 30px;
+    }
 
     .stream-grid {
         column-count: 2;
@@ -657,6 +671,53 @@ live {
 
 @media all and ( max-width: 800px ) {
 
+    nav {
+        gap: 16px;
+    }
+
+    header .header-inner {
+        padding: 16px var( --ktv-padding );
+    }
+
+    header .header-inner .site-title {
+        gap: 8px;
+        font-size: 22px;
+    }
+
+    header .header-inner .site-title img {
+        width: 42px;
+        height: 42px;
+    }
+
+    header .header-inner nav a {
+        font-size: 14px;
+    }
+
+    footer .keycodes ul li span {
+        padding: 0 12px;
+        letter-spacing: 0;
+        font-size: 13px;
+    }
+
+    .page-title {
+        margin: 32px 0 24px 0;
+        font-size: 22px;
+    }
+
+    .video .info h3 {
+        margin-right: 10%;
+    }
+
+    .stream-info h2 {
+        margin-right: 0;
+        font-size: 24px;
+    }
+
+    .stream-info p {
+        margin-right: 0;
+        font-size: 16px;
+    }
+
     .stream-grid {
         column-count: 1;
     }
@@ -667,6 +728,27 @@ live {
 
     :root {
         --ktv-padding: 24px;
+    }
+
+    footer .keycodes ul {
+        grid-template-columns: 1fr;
+    }
+
+    footer .keycodes ul li,
+    footer .keycodes ul li:nth-child( 2n + 1 ) {
+        justify-content: center;
+    }
+
+    footer .keycodes ul li:nth-child( 2n + 1 ) code {
+        order: unset;
+    }
+
+    .video .info h3 {
+        margin-right: 0;
+    }
+
+    .stream-info h2 {
+        font-size: 22px;
     }
 
 }

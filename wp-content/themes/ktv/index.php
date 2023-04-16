@@ -59,10 +59,10 @@
                         'K' => __( 'Play / pause', 'ktv' ),
                         'F' => __( 'Fullscreen', 'ktv' ),
                         'ESC' => __( 'Close fullscreen', 'ktv' ),
-                        '⯇' => __( 'Rewind 5 sec', 'ktv' ),
-                        '⯈' => __( 'Forwards 5 sec', 'ktv' ),
-                        '⯅' => __( 'Increase sound 5%', 'ktv' ),
-                        '⯆' => __( 'Decrease sound 5%', 'ktv' )
+                        '&#11164;' => __( 'Rewind 5 sec', 'ktv' ),
+                        '&#11166;' => __( 'Forwards 5 sec', 'ktv' ),
+                        '&#11165;' => __( 'Increase sound 5%', 'ktv' ),
+                        '&#11167;' => __( 'Decrease sound 5%', 'ktv' )
                     ] as $key => $label ) { ?>
                         <li>
                             <code><?php echo $key; ?></code>
