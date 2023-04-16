@@ -759,6 +759,19 @@ live {
         column-count: 1;
     }
 
+    .stream-preview h1 {
+        font-size: 26px;
+    }
+
+    .stream-preview h2 {
+        font-size: 22px;
+    }
+
+    .stream-preview p {
+        max-width: 80%;
+        font-size: 16px;
+    }
+
 }
 
 @media all and ( max-width: 600px ) {
@@ -786,6 +799,14 @@ live {
 
     .stream-info h2 {
         font-size: 22px;
+    }
+
+    .stream-preview h1 {
+        font-size: 24px;
+    }
+
+    .stream-preview p {
+        max-width: 100%;
     }
 
 }
