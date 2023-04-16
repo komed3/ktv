@@ -9,7 +9,7 @@
  * Text Domain: ktv
  */
 
-@import url( 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap' );
+@import url( 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;900&display=swap' );
 
 :root {
 
@@ -469,7 +469,14 @@ live {
 
 /* schedule */
 
+.schedule-container {
+    width: 100%;
+    height: auto;
+    overflow-x: scroll;
+}
+
 .schedule {
+    min-width: 1200px;
     overflow: hidden;
 }
 
@@ -612,7 +619,7 @@ live {
 
 .schedule-content .event a h4 {
     margin: 0;
-    font-weight: 900;
+    font-weight: 600;
 }
 
 .schedule-content .event a live {

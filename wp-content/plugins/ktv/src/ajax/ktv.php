@@ -162,13 +162,15 @@
 
                 $content = '<div class="content">
                     <h2 class="page-title">' . __( 'Schedule', 'ktv' ) . '</h2>
-                    <div class="schedule">
-                        <div class="schedule-header">
-                            <div class="date">&nbsp;</div>
-                            ' . implode( '', $hours ) . '
-                        </div>
-                        <div class="schedule-content">
-                            ' . implode( '', $days ) . '
+                    <div class="schedule-container">
+                        <div class="schedule">
+                            <div class="schedule-header">
+                                <div class="date">&nbsp;</div>
+                                ' . implode( '', $hours ) . '
+                            </div>
+                            <div class="schedule-content">
+                                ' . implode( '', $days ) . '
+                            </div>
                         </div>
                     </div>
                 </div>';
