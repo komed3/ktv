@@ -72,5 +72,8 @@
                 </ul>
             </div>
         </footer>
+        <div id="scrolltop">
+            <?php _e( 'Scroll top', 'ktv' ); ?>
+        </div>
     </body>
 </html>

@@ -181,7 +181,7 @@ footer {
     align-items: center;
     gap: 16px;
     margin-top: 64px;
-    padding: 64px var( --ktv-padding );
+    padding: 64px var( --ktv-padding ) 128px;
     text-transform: uppercase;
     background: var( --ktv-gray );
 }
@@ -241,6 +241,36 @@ footer .keycodes ul li span {
     padding: 0 16px;
     letter-spacing: 1px;
     font-size: 14px;
+}
+
+/* scroll top */
+
+#scrolltop {
+    position: fixed;
+    left: 50%;
+    bottom: 32px;
+    transform: translate( -50%, 260px ) scale( 0.25 );
+    height: 42px;
+    padding: 0 24px;
+    line-height: 42px;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    background: var( --ktv-accent );
+    border-radius: 24px;
+    box-shadow: var( --ktv-shadow );
+    z-index: 99;
+    cursor: pointer;
+    transition: all 150ms ease-out;
+}
+
+#scrolltop.active {
+    transform: translate( -50%, 0 ) scale( 1 );
+}
+
+#scrolltop:hover {
+    filter: brightness( 1.25 ) contrast( 1.25 );
+    transform: translate( -50%, -6px ) scale( 1.05 );
 }
 
 /* main + content */

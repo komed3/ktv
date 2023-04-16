@@ -201,6 +201,28 @@ jQuery( document ).ready( function ( $ ) {
 
     } );
 
+    $( document ).on( 'click', '#scrolltop', function () {
+
+        $( 'html, body' ).animate( {
+            scrollTop: 0
+        }, 150 );
+
+    } );
+
+    $( window ).scroll( function () {
+
+        if( $( window ).scrollTop() > 240 ) {
+
+            $( '#scrolltop' ).addClass( 'active' );
+
+        } else {
+
+            $( '#scrolltop' ).removeClass( 'active' );
+
+        }
+
+    } );
+
     /* load content */
 
     let path = window.location.pathname.split( '/' );
