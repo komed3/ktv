@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ktv\n"
-"POT-Creation-Date: 2023-04-15 16:23+0200\n"
+"POT-Creation-Date: 2023-04-16 09:54+0200\n"
 "PO-Revision-Date: 2021-11-28 13:08+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -98,7 +98,7 @@ msgstr ""
 
 #: wp-content/plugins/ktv/src/ajax/ktv.php:51
 #: wp-content/plugins/ktv/src/ajax/ktv.php:90
-#: wp-content/plugins/ktv/src/ajax/ktv.php:187
+#: wp-content/plugins/ktv/src/ajax/ktv.php:189
 msgid "Previous broadcasts …"
 msgstr ""
 
@@ -113,15 +113,15 @@ msgstr ""
 msgid "On Air"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/ajax/ktv.php:184
+#: wp-content/plugins/ktv/src/ajax/ktv.php:186
 msgid "Archive"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/ajax/ktv.php:245
+#: wp-content/plugins/ktv/src/ajax/ktv.php:247
 msgid "Channel"
 msgstr ""
 
-#: wp-content/plugins/ktv/src/ajax/ktv.php:246
+#: wp-content/plugins/ktv/src/ajax/ktv.php:248
 msgid "Topic"
 msgstr ""
 
@@ -208,4 +208,8 @@ msgstr ""
 
 #: wp-content/themes/ktv/index.php:65
 msgid "Decrease sound 5%"
+msgstr ""
+
+#: wp-content/themes/ktv/index.php:76
+msgid "Scroll top"
 msgstr ""
