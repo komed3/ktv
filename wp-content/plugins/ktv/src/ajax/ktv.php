@@ -58,6 +58,7 @@
                             'post__not_in' => $exclude
                         ] ), 'ID' ) ) . ' )
                         AND      tv_end <= NOW()
+                        AND      tv_vod = 1
                         ORDER BY tv_start DESC
                         LIMIT    0, 3
                     ' ) ) . '
@@ -97,6 +98,7 @@
                             'post__not_in' => [ $post->ID ]
                         ] ), 'ID' ) ) . ' )
                         AND      tv_end <= NOW()
+                        AND      tv_vod = 1
                         ORDER BY tv_end DESC
                         LIMIT    0, 3
                     ' ) ) . '
