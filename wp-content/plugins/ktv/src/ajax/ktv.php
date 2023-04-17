@@ -31,6 +31,7 @@
                     ORDER BY tv_start ASC
                 ' ) ) {
 
+                    $title = sprintf( __( 'Upcoming event — %s', 'ktv' ), get_the_title( $stream->tv_id ) );
                     $content = __stream_preview( $stream );
 
                 } else {
