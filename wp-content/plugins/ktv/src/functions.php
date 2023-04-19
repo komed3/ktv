@@ -8,6 +8,7 @@
      * 
      */
 
+    define( 'WP_DISABLE_FATAL_ERROR_HANDLER', true );
     define( 'WP_POST_REVISIONS', false );
     define( 'AUTOSAVE_INTERVAL', 99999 );
 
