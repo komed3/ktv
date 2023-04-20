@@ -69,7 +69,7 @@ jQuery( document ).ready( function ( $ ) {
 
                     __content = _data.content;
 
-                    history.pushState( _data, '', _data.url );
+                    history.pushState( dataload, '', _data.url );
 
                     document.title = _data.title + __ktv.title;
 
@@ -218,6 +218,16 @@ jQuery( document ).ready( function ( $ ) {
         } else {
 
             $( '#scrolltop' ).removeClass( 'active' );
+
+        }
+
+    } );
+
+    $( window ).on( 'popstate', function () {
+
+        if( history.state ) {
+
+            __load( history.state, true );
 
         }
 
