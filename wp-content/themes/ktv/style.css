@@ -446,6 +446,8 @@ live {
     border-radius: 12px;
     box-shadow: var( --ktv-shadow );
     overflow: hidden;
+    transform: scale( 1 );
+    transition: all 150ms ease-out;
 }
 
 .video .image {
@@ -486,6 +488,10 @@ live {
 .stream-grid {
     column-count: 3;
     column-gap: 32px;
+}
+
+.stream-grid .video:hover {
+    transform: scale( 1.05 );
 }
 
 .stream-grid .video h3 {
