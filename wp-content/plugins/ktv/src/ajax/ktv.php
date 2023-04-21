@@ -256,6 +256,7 @@
                         SELECT   *
                         FROM     ' . $ktvdb . '
                         WHERE    tv_id IN ( ' . implode( ', ', array_column( get_posts( $args ), 'ID' ) ) . ' )
+                        AND      tv_vod = 1
                         ORDER BY tv_start DESC
                         LIMIT    0, 999
                     ' ) ) . '

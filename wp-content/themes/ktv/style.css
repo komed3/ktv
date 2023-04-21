@@ -4,7 +4,7 @@
  * Description: Komed TV theme
  * Author: komed3
  * Author URI: https://labs.komed3.de
- * Version: 2.1.01 [BETA] @ 2023-04-16
+ * Version: 2.1.02 [BETA] @ 2023-04-21
  * License: MIT
  * Text Domain: ktv
  */
@@ -156,6 +156,12 @@ header .header-inner .site-title {
     font-weight: 900;
     color: var( --ktv-accent );
     filter: brightness( 1.25 ) saturate( 1.25 );
+    transition: all 250ms;
+}
+
+header .header-inner .site-title:hover {
+    transform: scale( 1.05 );
+    filter: brightness( 1.4 ) saturate( 1.5 );
 }
 
 header .header-inner .site-title img {
