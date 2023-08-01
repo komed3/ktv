@@ -379,9 +379,6 @@ live {
 
 .stream-preview {
     position: relative;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: stretch;
     margin: 0;
     padding: 128px var( --ktv-padding );
     background: var( --ktv-dark );
